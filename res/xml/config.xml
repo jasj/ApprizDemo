@@ -1,0 +1,13 @@
+    <widget id="api.appriz.mobile" version="0.0.1">
+        <name>ApprizDemo</name>
+        <description>
+            A sample Appriz applicaction
+        </description>
+        <author email="asegreda@smartsoftint.com" href="http://cordova.io">
+            Appriz Developer Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+        <preference name="WebViewBounce" value="true" />
+    </widget>
+
