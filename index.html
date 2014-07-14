@@ -5,7 +5,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
 		<link rel="stylesheet" type="text/css" href="css/theme.css">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		
+		<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
 
@@ -32,7 +35,13 @@
 	</body>
 	
 	<script>
-	alert('hola');
-		$.post('http://127.0.0.1:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){alert('1');});
+		$.post('http://192.168.1.18:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){
+			alert('1');
+		},'json') .fail(function(e) {
+alert( JSON.stringify(e));
+})
+.always(function() {
+alert( "finished" );
+});;
 	</script>
 </html>
