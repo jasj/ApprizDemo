@@ -1,0 +1,88 @@
+.header_demo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 60px;
+	
+	background-color: hsl(206, 75%, 41%);
+	Color: white;
+	
+	text-align: center;
+	
+		font-family: times, Times New Roman, times-roman, georgia, serif;
+		font-size: 28px;
+		line-height: 0px;
+		letter-spacing: -1px;
+}
+
+.principal_menu{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 60px;
+	
+	padding-top: 15px;
+	font-size: 38px;
+	line-height: 10px;
+	letter-spacing: 10px;
+	background-color: hsl(206, 75%, 41%);
+	
+	color: white;
+	text-align: center;
+}
+
+.view{
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	right: 0px;
+	bottom: 75px;
+	
+	background-color: hsl(206, 75%, 90%);
+}
+
+.message{
+	float: top;
+	width : 100%;
+	
+	border: 1px solid hsl(206, 75%, 90%);
+	
+	background-color : white;
+	
+	height: 80px;
+	
+}
+
+.message img{
+	width: 44px;
+	height: 44px;
+	
+	position : relative;
+	left: 15px;
+	top:15px;
+}
+
+.message msg_header{
+
+	position : relative;
+	left: 48px;
+	top: -20px;
+	color: #5F5F5F;
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	font-size: 18px;
+	
+}
+
+.message time_stamp{
+	position : relative;
+	left: 0px;
+	top: 20px;
+	
+	color: #5F5F5F;
+}
+
+.message.unread{
+	background-color: hsl(206, 75%, 80%) !important;
+}
