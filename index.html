@@ -97,7 +97,7 @@
 		//-------------------------------------------------------//
 		
 		//bring message for this client
-		$.post('http://10.60.0.125:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){
+		$.post('http://10.60.0.75:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){
 			alert(JSON.stringify(data));
 			$.each(data,function(index, message){
 				
