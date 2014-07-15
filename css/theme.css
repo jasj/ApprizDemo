@@ -79,6 +79,24 @@ body{
 	overflow-x: hidden;
 }
 
+.delete_indicator{
+	background-color: #FF3553;
+	color: white;
+	
+	text-align: right;
+	overflow: hidden;
+	height: 80px;
+	width :0px;
+	
+	font-size: 18px;
+	line-height:78px;
+	font-weight: 900;
+	padding:0px;
+	
+	z-index:99;
+	
+	float:left;
+}
 .message{
 	float: top;
 	width : 100%;
