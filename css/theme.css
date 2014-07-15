@@ -115,7 +115,8 @@ body{
 
 .message time_stamp{
 	position : relative;
-	left: 0px;
+	left: -80px;
+	margin-left: -30px;
 	top: 20px;
 	
 	color: #5F5F5F;
@@ -135,4 +136,70 @@ body{
 .principal_menu .fa.active{
 	/*#1D95D1*/
 	color : #D2E8F8 !important; 
+}
+
+
+.iconp{
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	color: white;
+	font-size: 42px;
+	
+	display : hidden;	
+}
+.vertical_menu{
+	position: absolute;
+	left: -30px;
+
+	top : 45px;
+	width : 300px;
+	
+	
+	
+	z-index: 100;
+}
+.vertical_menu li{
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: -1px;
+	background-color: #FFF;
+	border: 1px solid #DDD;
+	
+	color: #333333;
+font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+} 
+
+.vertical_menu li img{
+position: relative;
+	height: 32px;
+	top : 5px;
+	
+	
+}
+
+.vertical_menu li div{
+position: relative;
+	height: 32px;
+	top: 5px;
+	left: -60px;
+	top: 10px;width : 250px;
+	color: #333333;
+font-family: Gill Sans / Gill Sans MT, sans-serif;
+color: #566471;
+font-weight: 400;
+float : right;
+width: 100px;
+height : 18px;
+
+	
+	
+}
+
+.vertical_menu li i{
+	position: relative;
+	left: 90px;
+	top: 15px;
+	float : right;
 }

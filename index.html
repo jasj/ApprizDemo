@@ -11,6 +11,7 @@
 
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/swipe.js"></script>
 
 	</head>
 	
@@ -21,37 +22,72 @@
 		
 		<div class="principal_menu">
 			<i class="fa fa-university active" div="entity_tab"></i>
-			<i class="fa fa-inbox"	div="message_tab"></i>
+			<i class="fa fa-inbox"	div="message_tab" iconp="filter"></i>
 			<i class="fa fa-github-alt" div="github_tab"></i>
 			<i class="fa fa-cogs" div="config_tab"></i>
 		</div>
 		
 		
-		<div id='entity_tab' class='view active'>
-			<div class='message unread'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
-			<div class='message'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
-			<div class='message'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
-			<div class='message'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
-			<div class='message unread'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
-			<div class='message unread'><img src='img/ic_90_iPhone_ios7_publicidad.png'></img><msg_header>Prueba</msg_header><time_stamp><i class="fa fa-calendar"></i> 12 jun 2014 16:56:12</time_stamp></div>
+		<div id='entity_tab' class='view active' style='text-align:center;'>
+			<img src='img/icono-appriz.png' />
+			<br>APPRIZ(R) 2014. Demo mobile API.</br>
 		</div>
 		
 		<div id='message_tab' class='view'>
-			entity tab
+		
 		</div>
 		
 		<div id='github_tab' class='view'>
-			githubtab
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00003"><img src='img/ic_90_iPhone_ios7_alerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00002"><img src='img/ic_90_iPhone_ios7_publicidad.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00006"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00004"><img src='img/ic_90_iPhone_ios7_alerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00005"><img src='img/ic_90_iPhone_ios7_publicidad.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00007"><img src='img/ic_90_iPhone_ios7_notific.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00008"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00009"><img src='img/ic_90_iPhone_ios7_alerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 000010"><img src='img/ic_90_iPhone_ios7_publicidad.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 000011"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 000012"><img src='img/ic_90_iPhone_ios7_alerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			<div  class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 000013"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><msg_header>messageshortMessage</msg_header><time_stamp><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</time_stamp></div>
+			
 		</div>
 		
 		<div id='config_tab' class='view'>
 			config tab
 		</div>
+		
+		<div id='detail_msg' class='view' iconp="back">
+			<p style="text-align: center; color: #1A73B6" id='shortMSG'> Hola mi nombre es juagreda</p>
+			<p style="text-align: justify; color: #000" id='longMSG'> Hola mi nombre es juagreda</p>
+			<hr>
+			
+		</div>
+		<div class='vertical_menu'>
+			<ul>
+				
+				<li><img src='img/ic_90_iPhone_ios7_myalerts.png'/><div>My Alerts</div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_alerts.png'/><div>Alerts</div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_notific.png'/><div>Notifications</div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_publicidad.png'/><div>Promotions</div> <i class="fa fa-check-square-o"></i></li>
+		
+				<li ><img src='img/FFFFFF-1.png'/><div>Read </div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/FFFFFF-1.png'/><div>Unread</div> <i class="fa fa-check-square-o"></i> </li>
+				<li style='background-color: #7878AE !important; text-align: center; color: white;' class='close_filter'>Close Filter</li>
+			</ul>
+		</div>
+		
+		<i class="fa fa-arrow-circle-o-left iconp"></i>
+		<i class="fa fa-filter iconp" id='filter'></i>
 	</body>
 	
 	<script>
-		//hide all views
+		//hide & helpers all views
 		$('.view').hide();
+		$('.iconp').hide();
+		$('.vertical_menu').hide();
+		
 		//Show first view
 		$('.view.active').show();
 		
@@ -62,7 +98,61 @@
 			$('.view.active').hide().removeClass('active');
 			
 			$('#'+$(this).attr('div')).show().addClass('active');
+			
+			$('.iconp').hide();
+			$('#'+$(this).attr('iconp')+'.iconp').show();
+			$('.vertical_menu').hide();
 		})
+		
+		
+		//Message Read
+		$(".message.unread").click(function(){
+			$(this).removeClass('unread');
+			$("#shortMSG").html($(this).find('msg_header').html());
+			$("#longMSG").html($(this).attr('longMSG'));
+			$('#detail_msg').show();
+			$(".fa.fa-arrow-circle-o-left.iconp").show();
+		});
+		
+		//Back from detail msg to list
+			$(".fa.fa-arrow-circle-o-left.iconp").click(function(){
+				$(this).hide();
+				$('#detail_msg').hide();
+				
+			});
+		
+		
+		//swip for delete message
+		$(".message").swipe( {
+			
+			//Generic swipe handler for all directions
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				var msg = $(this);
+				if(direction=='right'){msg.remove();}  
+			},
+			//Default is 75px, set to 0 for demo so any distance triggers swipe
+			 threshold:0
+        });
+		
+		//Show filter menu
+		$('#filter').click(function(){
+			$('.vertical_menu').show();
+		});
+		
+		//Filter selection logic
+		$('.vertical_menu li').click(function(){
+			//close the filter menu
+			if($(this).hasClass('close_filter')){
+				$('.vertical_menu').hide();
+			}else
+			if($(this).find('i').hasClass('fa-check-square-o')){
+				$(this).find('i').removeClass('fa-check-square-o').addClass('fa-square-o');
+				$('.message img[src="'+$(this).find('img').attr('src')+'"]').parent().hide();
+			}else{
+				$(this).find('i').removeClass('fa-square-o').addClass('fa-check-square-o');
+				$('.message img[src="'+$(this).find('img').attr('src')+'"]').parent().show();
+			}
+		});
 		
 		
 		
@@ -78,7 +168,7 @@
 				
 			
 				var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-				$('#message_tab').append("<div  class='message unread' id='"+message['idMessage']+"'><img src='"+img_msg+"'/><msg_header>"+message['shortMessage']+"</msg_header><time_stamp>d</time_stamp></div>");
+				$('#message_tab').append("<div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"'><img src='"+img_msg+"'/><msg_header>"+message['shortMessage']+"</msg_header><time_stamp><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</time_stamp></div>");
 			});
 		},'json') .fail(function(e) {
 			alert( JSON.stringify(e));
