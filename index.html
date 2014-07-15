@@ -29,7 +29,7 @@
 		
 		
 		<div id='entity_tab' class='view active' style='text-align:center;'>
-			<img src='img/icono-appriz.png' />
+			<img src='img/icono-appriz.png' class='appriz_logo'/>
 			<br>APPRIZ(R) 2014. Demo mobile API.</br>
 		</div>
 		
@@ -152,14 +152,25 @@
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				var msg = $(this);
 				if(direction=='right'){msg.remove();}  
+				
 			},
+			
+			swipeStatus:function(event, phase, direction, distance , duration , fingerCount) {
+				var msg = $(this);
+				
+				msg.css({"margin-left": distance});
+			   if(phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL) {
+					alert('sip');
+					msg.trigger('click');
+			   }
+			 },
 			//Default is 75px, set to 0 for demo so any distance triggers swipe
 			 threshold:0
         });
 		
 		//Show filter menu
 		$('#filter').click(function(){
-			$('.vertical_menu').show();
+			$('.vertical_menu').toggle();
 		});
 		
 		//Filter selection logic
