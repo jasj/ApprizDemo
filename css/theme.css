@@ -75,8 +75,8 @@ body{
 	
 	background-color: hsl(206, 75%, 90%);
 	
-	overflow-y: auto;
-	overflow-x: hidden;
+	
+	overflow: hidden;
 }
 
 .delete_indicator{

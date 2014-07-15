@@ -13,7 +13,7 @@
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/swipe.js"></script>
-		<script src="js/scrollz.js"></script>
+
 		
 		<script type="text/javascript">
 
@@ -187,8 +187,12 @@
 					else if(direction=='down') {
 						
 						if(msg.parent().scrollTop() < 1){alert('update list;')}
-						msg.parent().scrollTop(msg.parent().scrollTop - distance)
+						msg.parent().scrollTop(msg.parent().scrollTop() - distance);
 					
+					}
+					else if(direction=='up') {
+					//alert('up');
+						msg.parent().scrollTop(msg.parent().scrollTop() + distance);
 					}
 				   
 				   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
@@ -231,7 +235,7 @@
 		makeSwipe();
 		
 		//scroll and update
-		  $('#github_tab').scrollz({pull: true});
+	
 
 		  
 		
