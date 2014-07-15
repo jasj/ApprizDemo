@@ -83,6 +83,29 @@
 	</body>
 	
 	<script>
+	
+		//-------------------------------------------------------//
+		//                 		 API USE						 //
+		//-------------------------------------------------------//
+		
+		//bring message for this client
+		$.post('http://10.60.0.125:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){
+			alert(JSON.stringify(data));
+			$.each(data,function(index, message){
+				
+			
+				var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
+				$('#message_tab').append("<div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"'><img src='"+img_msg+"'/><msg_header>"+message['shortMessage']+"</msg_header><time_stamp><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</time_stamp></div>");
+			});
+		},'json') .fail(function(e) {
+			alert( JSON.stringify(e));
+		});
+		
+		//-------------------------------------------------------//
+		// 					GUI AND GENERIC FUNCTIONS            //
+		//------------------------------------------------------//
+		
+		
 		//hide & helpers all views
 		$('.view').hide();
 		$('.iconp').hide();
@@ -157,22 +180,7 @@
 		
 		
 		
-		//-------------------------------------------------------//
-		//                 		 API USE						 //
-		//-------------------------------------------------------//
 		
-		//bring message for this client
-		$.post('http://10.60.0.125:8089/appriz/getMessagesByClient',{"idSecretClient": "rtLtgs9/+XnHhJy/RFq+xd7IRq0u3mJAg2hCajq2PlB7RRNQfiWEKHqGsWzJenslrcjNmZsLxyNWzvMilTq+4OzhHd5R/BToS7r58U26ysM5J7ONqAUpIPFRwkLgPcDhNcbiNaWkGfJGIAPYO1WD7ANEH5FuaODW39WeWJiJdaeJ+WJc9X7EltQqTkuxTUU8z2SOWceVvxhn6Hod85Y0hw=="},function(data){
-			alert(JSON.stringify(data));
-			$.each(data,function(index, message){
-				
-			
-				var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-				$('#message_tab').append("<div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"'><img src='"+img_msg+"'/><msg_header>"+message['shortMessage']+"</msg_header><time_stamp><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</time_stamp></div>");
-			});
-		},'json') .fail(function(e) {
-			alert( JSON.stringify(e));
-		});
 
 	</script>
 </html>
