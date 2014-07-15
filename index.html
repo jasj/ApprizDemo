@@ -126,6 +126,8 @@
 			$('.iconp').hide();
 			$('#'+$(this).attr('iconp')+'.iconp').show();
 			$('.vertical_menu').hide();
+			$('.vertical_menu').hide();
+			$('#detail_msg').hide();
 		})
 		
 		
@@ -169,6 +171,7 @@
 						$(this).removeClass('unread');
 						$("#shortMSG").html($(this).find('td').eq(0).html());
 						$("#longMSG").html($(this).attr('longMSG'));
+						$('.iconp').hide();
 						$('#detail_msg').show();
 						$(".fa.fa-arrow-circle-o-left.iconp").show();
 				   }
