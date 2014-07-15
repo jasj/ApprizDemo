@@ -151,7 +151,7 @@
 			//Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				var msg = $(this);
-				if(direction=='right'){msg.remove();}  
+				if(direction=='right' & distance > 150){msg.remove();} else {msg.css({"margin-left": 0});} 
 				
 			},
 			
@@ -159,7 +159,8 @@
 				var msg = $(this);
 				
 				msg.css({"margin-left": distance});
-			   if(phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL) {
+			   
+			   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
 					alert('sip');
 					msg.trigger('click');
 			   }
