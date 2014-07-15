@@ -45,10 +45,10 @@
 		
 		<div id='github_tab' class='view'>
 			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
-			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><th>Shor message go here</th></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
-			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message ' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><th>Shor message go here</th></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
-			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message ' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><th>Shor message go here</th></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
-			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><th>Shor message go here</th></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
+			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
+			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
+			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
+			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001"><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
 			
 		</div>
 		
@@ -95,7 +95,8 @@
 				
 			
 				var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-				$('#message_tab').append("<div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"'><img src='"+img_msg+"'/><msg_header>"+message['shortMessage']+"</msg_header><time_stamp><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</time_stamp></div>");
+					$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"'><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
+					makeSwipe();
 			});
 		},'json') .fail(function(e) {
 			alert( JSON.stringify(e));
@@ -128,14 +129,7 @@
 		})
 		
 		
-		//Message Read
-		$(".message.unread").click(function(){
-			$(this).removeClass('unread');
-			$("#shortMSG").html($(this).find('msg_header').html());
-			$("#longMSG").html($(this).attr('longMSG'));
-			$('#detail_msg').show();
-			$(".fa.fa-arrow-circle-o-left.iconp").show();
-		});
+	
 		
 		//Back from detail msg to list
 			$(".fa.fa-arrow-circle-o-left.iconp").click(function(){
@@ -146,35 +140,43 @@
 		
 		
 		//swip for delete message
-		$(".message").swipe( {
-			
-			//Generic swipe handler for all directions
-			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-				var msg = $(this);msg.prev().css({"width":  0});
-				msg.css({"margin-left": 0});
-				if(direction=='right' & distance > 250){msg.remove(); } else {msg.css({"margin-left": 0}) ;} 
+		function makeSwipe(){
+			$(".message").swipe( {
 				
-			},
-			
-			swipeStatus:function(event, phase, direction, distance , duration , fingerCount) {
-				var msg = $(this);
+				//Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					var msg = $(this);msg.prev().css({"width":  0});
+					msg.css({"margin-left": 0});
+					if(direction=='right' & distance > 250){msg.remove(); } else {msg.css({"margin-left": 0}) ;} 
+					
+				},
 				
-				msg.css({"margin-left": distance});
-				msg.prev().css({"width":  distance-1});
-				
-				if (distance< 250) {
-					msg.prev().css({"background-color":  "#FDC111"});
-				}else{
-					msg.prev().css({"background-color":  "#FF3553"});
-				}
-			   
-			   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
-					msg.trigger('click');
-			   }
-			 },
-			//Default is 75px, set to 0 for demo so any distance triggers swipe
-			 threshold:0
-        });
+				swipeStatus:function(event, phase, direction, distance , duration , fingerCount) {
+					var msg = $(this);
+					if(direction=='right'){
+						msg.css({"margin-left": distance});
+						msg.prev().css({"width":  distance-1});
+						
+						if (distance< 250) {
+							msg.prev().css({"background-color":  "#FDC111"});
+						}else{
+							msg.prev().css({"background-color":  "#FF3553"});
+						}
+					}
+				   
+				   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
+						//read message
+						$(this).removeClass('unread');
+						$("#shortMSG").html($(this).find('td').eq(0).html());
+						$("#longMSG").html($(this).attr('longMSG'));
+						$('#detail_msg').show();
+						$(".fa.fa-arrow-circle-o-left.iconp").show();
+				   }
+				 },
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				 threshold:0
+			});
+		}
 		
 		//Show filter menu
 		$('#filter').click(function(){
@@ -198,7 +200,7 @@
 		
 		
 		
-		
+		makeSwipe();
 		
 
 	</script>

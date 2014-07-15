@@ -130,7 +130,20 @@ body{
 	text-align: left;
 	
 	width: calc(100% - 80px);
+	
 }
+
+.message  tr:first-child{
+	color: #1A73B6 ! important;
+	
+	
+} 
+
+.message.unread  tr:first-child{
+	
+	font-weight: bold;
+	
+} 
 
 
 .message.unread{
