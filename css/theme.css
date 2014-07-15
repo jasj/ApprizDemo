@@ -91,7 +91,7 @@ body{
 	font-size: 18px;
 	line-height:78px;
 	font-weight: 900;
-	padding:0px;
+	padding-right:0px;
 	
 	z-index:99;
 	
@@ -107,6 +107,10 @@ body{
 	
 	height: 80px;
 	
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	
+		font-family: 'PT Sans', arial, serif;
+	
 	
 	
 }
@@ -120,35 +124,19 @@ body{
 	top:15px;
 }
 
-.message msg_header{
-
-	position : relative;
-	left: 48px;
-	top: -20px;
-	color: #5F5F5F;
-	font-family: times, Times New Roman, times-roman, georgia, serif;
-	font-size: 18px;
+.message table {
+	float: right;
+	margin-top:10px;
+	text-align: left;
 	
+	width: calc(100% - 80px);
 }
 
-.message time_stamp{
-	position : relative;
-	left: -80px;
-	margin-left: -30px;
-	top: 20px;
-	
-	color: #5F5F5F;
-}
 
 .message.unread{
-	background-color: hsl(206, 75%, 70%) !important;
-	
-	border-color: 2px solid gray;
-	
-	box-shadow:  1px 1px 1px rgba(100,100,200,0.8);
-       
-     
-		
+	background-color: #E7EBFF !important;
+	border-color: 2px solid #B6C7EC !important;
+	      		
 }
 
 .principal_menu .fa.active{
