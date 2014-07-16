@@ -190,7 +190,7 @@
 					}
 					else if(direction=='down') {
 						
-						if(msg.parent().scrollTop() < 1){callNewMSG();}
+						if((msg.parent().scrollTop() < 1) && (distance >300)){callNewMSG();}
 						msg.parent().scrollTop(msg.parent().scrollTop() - distance);
 					
 					}
