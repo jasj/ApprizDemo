@@ -135,6 +135,7 @@
 					
 				
 					var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
+						alert("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
 						$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
 						
 				});
