@@ -165,11 +165,13 @@
 		
 		
 		//swip for delete message & scroll 
+		var oneTimeSendAjax = false;
 		function makeSwipe(){
 			$(".message").swipe( {
 				
 				//Generic swipe handler for all directions
 				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					oneTimeSendAjax =false;
 					var msg = $(this);msg.prev().css({"width":  0});
 					msg.css({"margin-left": 0});
 					if(direction=='right' & distance > 250){msg.remove(); } else {msg.css({"margin-left": 0}) ;} 
@@ -190,7 +192,7 @@
 					}
 					else if(direction=='down') {
 						
-						if((msg.parent().scrollTop() < 1) && (distance >300)){callNewMSG();}
+						if((msg.parent().scrollTop() < 1) && (distance > 100) && (oneTimeSendAjax == false)){ oneTimeSendAjax = true; callNewMSG();}
 						msg.parent().scrollTop(msg.parent().scrollTop() - distance);
 					
 					}
