@@ -265,6 +265,10 @@ height : 18px;
 	font-weight: 400px;
 }
 
+
+#longMSG{  width: calc(100% - 160px);}
+
+
 #shortMSG{
 	margin-top: 4px;
 }

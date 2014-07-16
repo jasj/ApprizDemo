@@ -135,7 +135,7 @@
 					
 				
 					var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-						$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services=\""+JSON.stringify(message['services'])+"\"><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
+						$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
 						
 				});
 			},'json') .fail(function(e) {
@@ -237,7 +237,7 @@
 						//Include services
 						   management = "";
 						  var mpi = management;
-						  var array_serv = JSON.parse(msg.attr('services'));
+						  var array_serv = JSON.parse(atob(msg.attr('services')));
 							for(serv in  array_serv){
 								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
 							}
