@@ -82,20 +82,20 @@
 			<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style='background-color: #fefefe !important;'>
             </br>&nbsp;
 			</br>&nbsp;
-			<li class="ui-last-child"><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
+			<li class="ui-last-child" view='service_luncher'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
 			</br>&nbsp;
 			</br>&nbsp;
 			
-			<li class="ui-last-child"><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
+			<li class="ui-last-child" view='config_rules'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
 		</ul>
 			
 		</div>
 		
 		<div id='detail_msg' class='view' iconp="back">
-			<div style='width:100%;  ' class="internal_header"><p style="text-align: center; color: #1A73B6" id='shortMSG'> Hola mi nombre es juagreda</p></div>
+			<div style='width:100%;  ' class="internal_header"><p style="text-align: center; color: #1A73B6" id='shortMSG'> </p></div>
 			<div class='div_content' >
 				<img width='60px' class='typeIcon'></img>
-				<p style="text-align: justify; color: #000" id='longMSG'> Hola mi nombre es juagreda</p>
+				<p style="text-align: justify; color: #000" id='longMSG'></p>
 			</div>
 			<div style='width:100%;  ' class="internal_header"><i class="fa fa-history" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;History<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
 			<div class='div_content' style='display: none;'></div>
@@ -107,6 +107,16 @@
 				 </ul></div>
 				 <a href="#" class="ui-btn mng" onclick="$('.management').toggle();">management </a>
 			</div>
+			
+		<div id='config_rules' class='view' iconp="back">
+			<div style='width:100%;  ' class="internal_header"><p class='title' > My Alerts</p></div>
+			
+		</div>
+		
+		<div id='service_luncher' class='view' iconp="back">
+			<div style='width:100%;  ' class="internal_header"><p class='title' > Services</p></div>
+		</div>
+		
 		<div class='vertical_menu'>
 			<ul>
 				
@@ -120,6 +130,8 @@
 				<li style='background-color: #7878AE !important; text-align: center; color: white;' class='close_filter'>Close Filter</li>
 			</ul>
 		</div>
+		
+		
 		
 		
 		
@@ -191,7 +203,8 @@
 		//Back from detail msg to list
 			$(".fa.fa-arrow-circle-o-left.iconp").click(function(){
 				$(this).hide();
-				$('#detail_msg').hide();
+				$('#detail_msg , #service_luncher , #config_rules').hide();
+				
 				$('.management').hide();
 				
 			});
@@ -372,7 +385,12 @@
 		});
 		
 		
+	//settings page
 	
+	$('.ui-last-child').click(function(){
+		$('#'+$(this).attr('view')).show();
+		$(".fa.fa-arrow-circle-o-left.iconp").show();
+	});
 		
 		  
 		
