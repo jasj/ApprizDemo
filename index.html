@@ -26,7 +26,8 @@
 	
 	<body>
 		<div class="header_demo">
-			<h3>Appriz Demo</h3>
+		<img src='img/logo_smbank.png' style='height:36px;'></img>
+			
 		</div>
 		
 		<div class="principal_menu">
@@ -43,10 +44,13 @@
 		</div>
 		
 		<div id='message_tab' class='view'>
+			<div style='width:100%;  ' class="internal_header"><p class='title' > Inbox</p></div>
 		
 		</div>
 		
 		<div id='github_tab' class='view'>
+		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
+			
 			<div class='refreshing_list'><i class="fa fa-spinner fa-spin"></i> Refreshing ...</div>
 			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001" services='eyJHRVMwMDEiOiJDYWxsIG1lISIsIkdFUzAwMiI6ImNhbGwgeW91ISJ9'><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
 			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001" services='e30='><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
@@ -74,7 +78,17 @@
 		</div>
 		
 		<div id='config_tab' class='view'>
-			config tab
+			<div style='width:100%;  ' class="internal_header"><p class='title' > Settings</p></div>
+			<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style='background-color: #fefefe !important;'>
+            </br>&nbsp;
+			</br>&nbsp;
+			<li class="ui-last-child"><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
+			</br>&nbsp;
+			</br>&nbsp;
+			
+			<li class="ui-last-child"><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
+		</ul>
+			
 		</div>
 		
 		<div id='detail_msg' class='view' iconp="back">
@@ -89,15 +103,10 @@
 			<div class='div_content' style='display: none;'></div>
 			
 			 
-			 <div class='management'>
-				<ul>
-					<li>Block card</li>
-					<li>Call me</li>
-					<li>send report</li>
-				</ul>
+			 <div class='management'><ul>
+				 </ul></div>
+				 <a href="#" class="ui-btn mng" onclick="$('.management').toggle();">management </a>
 			</div>
-			 <a href="#" class="ui-btn mng" onclick="$('.management').toggle();">management </a>
-		</div>
 		<div class='vertical_menu'>
 			<ul>
 				
@@ -117,7 +126,7 @@
 		
 		
 		<i class="fa fa-arrow-circle-o-left iconp"></i>
-		<i class="fa fa-filter iconp" id='filter'></i>
+		<i class="fa fa-filter icons" id='filter'></i>
 	</body>
 	
 	<script>
@@ -152,7 +161,7 @@
 		
 		//hide & helpers all views
 		$('.view').hide();
-		$('.iconp').hide();
+		$('.iconp , .icons').hide();
 		$('.management').hide();
 
 		$('.vertical_menu').hide();
@@ -168,8 +177,8 @@
 			
 			$('#'+$(this).attr('div')).show().addClass('active');
 			
-			$('.iconp').hide();
-			$('#'+$(this).attr('iconp')+'.iconp').show();
+			$('.iconp ,.icons').hide();
+			$('#'+$(this).attr('iconp')+'').show();
 			$('.vertical_menu').hide();
 			$('.vertical_menu').hide();
 			$('.management').hide();
@@ -284,6 +293,73 @@
 		
 		//scroll and update
 		
+			$(".message").swipe( {
+				
+				//Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+					oneTimeSendAjax =false;
+					var msg = $(this);msg.prev().css({"width":  0});
+					msg.css({"margin-left": 0});
+					if(direction=='right' & distance > 250){msg.remove(); } else {msg.css({"margin-left": 0}) ;} 
+					
+				},
+				
+				swipeStatus:function(event, phase, direction, distance , duration , fingerCount) {
+					var msg = $(this);
+					if(direction=='right'){
+						msg.css({"margin-left": distance});
+						msg.prev().css({"width":  distance-1});
+						
+						if (distance< 250) {
+							msg.prev().css({"background-color":  "#FDC111"});
+						}else{
+							msg.prev().css({"background-color":  "#FF3553"});
+						}
+					}
+					else if(direction=='down') {
+						
+						if((msg.parent().scrollTop() < 1) && (distance > 100) && (oneTimeSendAjax == false)){ oneTimeSendAjax = true; callNewMSG();}
+						msg.parent().scrollTop(msg.parent().scrollTop() - distance);
+					
+					}
+					else if(direction=='up') {
+					//alert('up');
+						msg.parent().scrollTop(msg.parent().scrollTop() + distance);
+					}
+				   
+				   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
+						//read message
+						$(this).removeClass('unread');
+						$("#shortMSG").html($(this).find('td').eq(0).html());
+						$("#longMSG").html($(this).attr('longMSG'));
+						$('.iconp').hide();
+						$('#detail_msg img.typeIcon').attr('src',$(this).find('img').eq(0).attr('src'));
+						$('#detail_msg').show();
+						$(".fa.fa-arrow-circle-o-left.iconp").show();
+						//Include services
+						   management = "";
+						  var mpi = management;
+						  var array_serv = JSON.parse(atob(msg.attr('services')));
+							for(serv in  array_serv){
+								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
+							}
+							
+						
+						if(management == "") {$('.ui-btn.mng').hide(); }else{
+							$('.management ul').html(management);
+							$('.ui-btn.mng').show();
+						}
+						
+						
+						
+				   }
+				 },
+				//Default is 75px, set to 0 for demo so any distance triggers swipe
+				 threshold:0
+			});
+		
+		
+		
 		
 		//Control for sliders
 		$( document).on('click','.internal_header .fa-plus-square-o',function(){
@@ -294,8 +370,10 @@
 			$(this).next('.div_content').hide();
 			$(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
 		});
+		
+		
 	
-
+		
 		  
 		
 

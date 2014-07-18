@@ -6,7 +6,7 @@ body{
 	top: 0px;
 	left: 0px;
 	right: 0px;
-	height: 50px;
+	height: 40px;
 	
 	background-color: hsl(206, 75%, 41%);
 	Color: white;
@@ -21,7 +21,7 @@ body{
 		font-family: 'PT Sans', arial, serif;
 	color:#ffffff;
 	text-align:center;
-	font-size:24px;
+	font-size:18px;
 	font-weight:bold;
 	padding:10px;
 	
@@ -36,15 +36,7 @@ body{
 	
 	
 
-	
-	box-shadow: 
-        0 2px 8px rgba(0,0,0,0.5), /* Exterior Shadow */
-        inset 0 1px rgba(255,255,255,0.3), /* Top light Line */
-        inset 0 10px rgba(255,255,255,0.2), /* Top Light Shadow */
-       /* inset 0 10px 20px rgba(255,255,255,0.25), /* Sides Light Shadow */
-        inset 0 -15px 30px rgba(0,0,0,0.3); /* Dark Background */
 
-	
 	display: inline-block;
 	text-decoration: none
 }
@@ -73,7 +65,7 @@ body{
 	right: 0px;
 	bottom: 75px;
 	
-	background-color: hsl(206, 75%, 90%);
+	background-color: #FEFEFE/*hsl(206, 75%, 90%)*/;
 	
 	
 	overflow: hidden;
@@ -154,7 +146,8 @@ body{
 
 .principal_menu .fa.active{
 	/*#1D95D1*/
-	color : #D2E8F8 !important; 
+	/*color : #D2E8F8 !important; */
+	color: #FFFF00;
 }
 
 
@@ -163,7 +156,17 @@ body{
 	top: 10px;
 	left: 15px;
 	color: white;
-	font-size: 42px;
+	font-size: 32px;
+	
+	display : hidden;	
+}
+
+.icons{
+	position: absolute;
+	top: 65px;
+	left: 15px;
+	color: #888;
+	font-size: 18px;
 	
 	display : hidden;	
 }
@@ -269,9 +272,13 @@ height : 18px;
 #longMSG{  width: calc(100% - 160px);}
 
 
-#shortMSG{
+#shortMSG, .internal_header p{
 	margin-top: 4px;
+	 color: #1A73B6;
+	 text-align: center;
 }
+
+
 
 .div_content{
 	background-color: #FAFAFA;
