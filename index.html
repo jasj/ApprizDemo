@@ -110,6 +110,35 @@
 			
 		<div id='config_rules' class='view' iconp="back">
 			<div style='width:100%;  ' class="internal_header"><p class='title' > My Alerts</p></div>
+				<div style='width:100%; height :100%;' id='rules_div'>
+					<div class='rule'>
+						<div class='rule_header'>
+							<div class='rule_header_txt'><p>Ejemplo de Regla con descripcion larga ghffghf hg hfhgfh fg </p></div>
+							
+							<input type="checkbox" name="toggle2" id="toggle2" class='toggle'>
+							<label for="toggle2"></label>
+						</div>
+						<div class='rule_body'>
+						 fddf
+						</div>
+					</div>
+					<div class='rule'>
+						<div class='rule_header'>
+							<div class='rule_header_txt'><p>Ejemplo de Regla con descripcion corta </p></div>
+							
+							<input type="checkbox" name="toggle" id="toggle" class='toggle'>
+							<label for="toggle"></label>
+						</div>
+						<div class='rule_body'>
+						 <p align='justify' style='100%'> Notificarme cuando se realizen <trxNo>3</trxNo> en supermercados por un monto acumulado de <totalAmount>10000</totalAmount> MX en un lapso de <time>30 minutos</time>.</p>
+							<table>
+								<tr><th>Amount</th><td><input type='number' field='totalAmount' maxlength="10"/></td></tr>
+								<tr><th>Count</th><td><input type='number' field='trxNo' maxlength="10"/></td></tr>
+								<tr><th>time</th><td><input type='number' field='time' maxlength="10"/></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
 			
 		</div>
 		
@@ -143,6 +172,38 @@
 	
 	<script>
 		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
+		
+		////
+		function addRules(objs){
+			var toAppend = '';
+			$('#rules_div').html('');
+			$.each(objs,function(index,obj){;
+				toAppend = "<div class='rule' id='rule_"+obj["idRule"]+"'><div class='rule_header'><div class='rule_header_txt'><p>"+obj["ruleName"]+"</p></div>";
+				toAppend = toAppend + "<input type='checkbox' name='toggle_"+obj["idRule"]+"' id='toggle_"+obj["idRule"]+"' class='toggle'><label for='toggle_"+obj["idRule"]+"'></label></div>";
+				toAppend = toAppend + "<div class='rule_body'><p align='justify' style='100%'>"+obj["description"].replace(/<\[singleAmount\]>/g,"<singleAmount>"+obj['singleAmount']+"</singleAmount>").replace(/<\[trxNo\]>/g,"<trxNo>"+obj['trxNo']+"</trxNo>").replace(/<\[idTime\]>/g,"<idTime>"+obj['idTime']+"</idTime>").replace(/<\[totalAmount\]>/g,"<totalAmount>"+obj['totalAmount']+"</totalAmount>").replace(/<\[varation\]>/g,"<varation>"+obj['varation']+"</varation>") +"</p><table>";
+				if("trxNo" in obj ) toAppend = toAppend + "<tr><th>Trx No.</th><td><input type='number' field='trxNo' maxlength='10' value='"+obj["trxNo"]+"'></td></tr>";
+				if("singleAmount" in obj ) toAppend = toAppend + "<tr><th>Amount</th><td><input type='number' field='singleAmount' maxlength='10' value='"+obj["singleAmount"]+"'/></td></tr>";
+				if("totalAmount" in obj ) toAppend = toAppend + "<tr><th>Total Amount</th><td><input type='number' field='totalAmount' maxlength='10' value='"+obj["totalAmount"]+"'/></td></tr>";
+				if("varation" in obj ) toAppend = toAppend + "<tr><th>Variation</th><td><input type='number' field='varation' maxlength='10' value='"+obj["varation"]+"'/></td></tr>";
+				if("idTime" in obj ) toAppend = toAppend + "<tr><th>Time No.</th><td><input type='number' field='idTime' maxlength='10' value='"+obj["idTime"]+"'/></td></tr>";
+				toAppend = toAppend + "</table></div></div>";
+				$('#rules_div').append(toAppend);
+			});
+		}
+		
+		
+						
+							
+							
+							
+						/*	
+						
+							<table>
+								<tr><th>Amount</th><td><input type='number' field='totalAmount' maxlength="10"/></td></tr>
+								<tr><th>Count</th><td><input type='number' field='trxNo' maxlength="10"/></td></tr>
+								<tr><th>time</th><td><input type='number' field='time' maxlength="10"/></td></tr>
+							</table>
+						</div>*/
 		//-------------------------------------------------------//
 		//                 		 API USE						 //
 		//-------------------------------------------------------//
@@ -412,7 +473,63 @@
 	});
 		
 		  
-		 getRules();
+		 //getRules();
 
+		 //open rules details
+	$(document).on('click','.rule_header p',function(){
+		if($(this).parent().parent().parent().height() < 61){
+			$(this).parent().parent().parent().css({"height":"auto"})
+			$(this).parent().parent().parent().find('.rule_body').show();
+		}else{
+				$(this).parent().parent().parent().css({"height":"60px"})
+			$(this).parent().parent().parent().find('.rule_body').hide();
+		}
+	});
+	
+	//change values on rule description
+	$(document).on('keyup','.rule_body input',function(){
+		$(this).parent().parent().parent().parent().parent().parent().find($(this).attr('field')).html($(this).val());
+	});
+	
+	tmpR = {
+    "status": 200,
+    "rules": [{
+        "idRule": "Jd6NoTij3xTDF9WurjcOKt37hkwf2auTinKnsrhUHtulfv+hnAFH43BxYo+0nrynehvBCvWiFGDf3U0GytB407Ovb+G9RhZTByorVsaPWPI15wqpbijpnRVHgY0pIVl1rjZYPkvU+p9EXW+h7rx+/h3D04SR6nypfeehG4xFgKaGXgUENj6wCKvON980CQ4o",
+        "ruleName": "Monto Individual",
+        "description": "Notificarme cuando realice una transacción por un monto superior a $<[singleAmount]>.",
+        "singleAmount": 75
+    }, {
+        "idRule": "z52I/ayONskbgvh887bNWId74MDgWVEIrLwdh0L8pXZF6EecIJQEpcg1W2ON6j6ktXiz+peZE9WnT9AzSKjJEPe9AGaRQqybu0qDjA8GZnyoN9uylYrk3d98pys9XwPia3pMqKdNcA2kT93zURMigcvJICqXYOhpBDo25CKSlD5z1kgNDaer9V0jpxmx40XS",
+        "ruleName": "Cantidad de Transacciones",
+        "description": "Notificarme cuando realice más de <[trxNo]> transacciones",
+        "trxNo": 2,
+        "idTime": 5
+    }, {
+        "idRule": "Sr03X6U3hzXPM6HcYatRUK9XNDV75jF4mrEd2BCAs6M3NfPZRCqelacrB9HTAehbABIw+mRea4LEr2TReuU/Ql/WofVxh43D/nTOhjxarXcQwe07lrtdpGTMN1d/P8+hW7ceaVzuZEVWiO2vzavLWne0DGmXZJKPrcwHfgPQsbVHHJhb6khbByLlMbkXxDLf",
+        "ruleName": "Monto Acumulado",
+        "description": "Notificarme cuando el monto acumulado de transacciones supere los $<[totalAmount]> en los últimos <[idTime]>.",
+        "totalAmount": 150,
+        "idTime": 5
+    }, {
+        "idRule": "g6h265UCmP66bGsZe6DD9pxLs/G/WEx9y7YjiIrNWmiVb4gNXL17BnDLecAhYNbFxli9CEUSs0nAW9UWweVV1SR9r8i+LdJsF6XsD78CJ1nS8A5f2nH00gejahu+JwELMESIopYnA71JHySLU8nS7Qqtz1QHbz36/amnqeor5I8iKyJ05x86fh949wJK/W3n",
+        "ruleName": "Catidad y Monto de Transacciones",
+        "description": "Notificarme cuando realice más de <[trxNo]> transacciones cuyo monto supere los $<[totalAmount]> en los últimos <[idTime]>.",
+        "totalAmount": 300,
+        "trxNo": 3,
+        "idTime": 5
+    }, {
+        "idRule": "6NhhqizDD4TkwCX7OwlVNt74zWuWaC9yOUcX1JN6mZ2a06sTJ6VKm9YofjlMJpZ+boUyYEz1dXK6p1p9HMGS3bJcgMrEw6ePBEp0mwYJkaKUFedC6z0a/SGSuIERDNPVRolKFgpeVpPw7UCkhqGXKso/MF8hZVsOoH3n7BfiC81qNhYvL2O0uGfCQ+w4gVzf",
+        "ruleName": "Diferencia porcentual",
+        "description": "Notificarme la tasa de interés de la tarjeta presente una variación de un <[varation]> %.",
+        "varation": 10
+    }, {
+        "idRule": "rDXM9yJ6hxodcCQQvlwzBlWyrGY/Q682qIBppYyZRpILYS9OQ95yxQ9pMMuqoeZTpQbTMsHm5yYUXW21Ryl5I0G/VL5VdUjPK91xj7MFeBaZJ4mIJFPrh6g3YF2w5HmU5nO9feIOci95vz/fUuTXZxKnnYm2I4z4gc8I9O/9I63D1bsCUEfeceSpeVR2b23L",
+        "ruleName": "MTindividiual",
+        "description": "252",
+        "trxNo": 25,
+        "idTime": 6
+    }]
+};
+	addRules(tmpR["rules"]);
 	</script>
 </html>
