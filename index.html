@@ -14,6 +14,7 @@
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/swipe.js"></script>
+		
 
 		
 		<script type="text/javascript">
@@ -86,7 +87,7 @@
 			</br>&nbsp;
 			</br>&nbsp;
 			
-			<li class="ui-last-child" view='config_rules'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
+			<li class="ui-last-child" view='config_rules' eval='getRules("kilomanyaroB")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
 		</ul>
 			
 		</div>
@@ -171,39 +172,60 @@
 	</body>
 	
 	<script>
+	
+	
+	    //---------------------------------------------------------------------------------------------------------------------//
+		//                                        Phonegap APPRIZ-API SDK                                                      //
+		//---------------------------------------------------------------------------------------------------------------------//
 		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
+		rulesChanges = {};
+		IP = '192.168.1.7';
 		
-		////
 		function addRules(objs){
 			var toAppend = '';
 			$('#rules_div').html('');
 			$.each(objs,function(index,obj){;
 				toAppend = "<div class='rule' id='rule_"+obj["idRule"]+"'><div class='rule_header'><div class='rule_header_txt'><p>"+obj["ruleName"]+"</p></div>";
-				toAppend = toAppend + "<input type='checkbox' name='toggle_"+obj["idRule"]+"' id='toggle_"+obj["idRule"]+"' class='toggle'><label for='toggle_"+obj["idRule"]+"'></label></div>";
+				toAppend = toAppend + "<input type='checkbox' name='toggle_"+obj["idRule"]+"' id='toggle_"+obj["idRule"]+"' class='toggle' "+(obj["Active"] ? "checked" : "")+"><label for='toggle_"+obj["idRule"]+"'></label></div>";
 				toAppend = toAppend + "<div class='rule_body'><p align='justify' style='100%'>"+obj["description"].replace(/<\[singleAmount\]>/g,"<singleAmount>"+obj['singleAmount']+"</singleAmount>").replace(/<\[trxNo\]>/g,"<trxNo>"+obj['trxNo']+"</trxNo>").replace(/<\[idTime\]>/g,"<idTime>"+obj['idTime']+"</idTime>").replace(/<\[totalAmount\]>/g,"<totalAmount>"+obj['totalAmount']+"</totalAmount>").replace(/<\[varation\]>/g,"<varation>"+obj['varation']+"</varation>") +"</p><table>";
-				if("trxNo" in obj ) toAppend = toAppend + "<tr><th>Trx No.</th><td><input type='number' field='trxNo' maxlength='10' value='"+obj["trxNo"]+"'></td></tr>";
-				if("singleAmount" in obj ) toAppend = toAppend + "<tr><th>Amount</th><td><input type='number' field='singleAmount' maxlength='10' value='"+obj["singleAmount"]+"'/></td></tr>";
-				if("totalAmount" in obj ) toAppend = toAppend + "<tr><th>Total Amount</th><td><input type='number' field='totalAmount' maxlength='10' value='"+obj["totalAmount"]+"'/></td></tr>";
-				if("varation" in obj ) toAppend = toAppend + "<tr><th>Variation</th><td><input type='number' field='varation' maxlength='10' value='"+obj["varation"]+"'/></td></tr>";
-				if("idTime" in obj ) toAppend = toAppend + "<tr><th>Time No.</th><td><input type='number' field='idTime' maxlength='10' value='"+obj["idTime"]+"'/></td></tr>";
+				if("trxNo" in obj ) toAppend = toAppend + "<tr><th>Trx No.</th><td><input type='number' field='trxNo' maxlength='10'  placeholder='"+obj["trxNo"]+"'></td></tr>";
+				if("singleAmount" in obj ) toAppend = toAppend + "<tr><th>Amount</th><td><input type='number' field='singleAmount' maxlength='10'  placeholder='"+obj["singleAmount"]+"'/></td></tr>";
+				if("totalAmount" in obj ) toAppend = toAppend + "<tr><th>Total Amount</th><td><input type='number' field='totalAmount' maxlength='10'  placeholder='"+obj["totalAmount"]+"'/></td></tr>";
+				if("varation" in obj ) toAppend = toAppend + "<tr><th>Variation</th><td><input type='number' field='varation' maxlength='10' placeholder='"+obj["varation"]+"'/></td></tr>";
+				if("idTime" in obj ) toAppend = toAppend + "<tr><th>Time</th><td><select class='SelectStyle'>"+SPickerString+"</select></td></tr>";
 				toAppend = toAppend + "</table></div></div>";
 				$('#rules_div').append(toAppend);
+				if("idTime" in obj ) {$('select:last option[value="'+obj["idTime"]+'"]').prop('selected', true); $('idTime:last').html($('select:last option[value="'+obj["idTime"]+'"]').html());}
 			});
+			$('#rules_div').append("<div style='width: 100%; height: 200px;'></div>");
+			
 		}
 		
+		function addRuleChange(idRule,field,value){
+			if (!(idRule in  rulesChanges)){
+				rulesChanges[idRule] = {"idRule" : idRule}
+			}
+				rulesChanges[idRule][field] = value;
+		}
 		
-						
-							
-							
-							
-						/*	
-						
-							<table>
-								<tr><th>Amount</th><td><input type='number' field='totalAmount' maxlength="10"/></td></tr>
-								<tr><th>Count</th><td><input type='number' field='trxNo' maxlength="10"/></td></tr>
-								<tr><th>time</th><td><input type='number' field='time' maxlength="10"/></td></tr>
-							</table>
-						</div>*/
+		function processRuleChange(){
+			 var tmp_ruleChange = [];
+			for ( ruleChange in rulesChanges){
+				tmp_ruleChange.push(rulesChanges[ruleChange]);
+			}
+			rulesChanges = {};
+			console.log(JSON.stringify(tmp_ruleChange));
+			return tmp_ruleChange;
+		}
+		
+		function timePicker(objs){
+			timePickerString = '<fieldset class="ui-field-contain">';
+			$.each(objs,function(index,obj){
+				timePickerString = timePickerString + "<option value='"+obj["idTime"]+"'>"+obj["amount"]+" "+obj["unit"]+"</option>";
+			});
+			return timePickerString+"</fieldset>";
+		}
+
 		//-------------------------------------------------------//
 		//                 		 API USE						 //
 		//-------------------------------------------------------//
@@ -211,7 +233,7 @@
 		//bring message for this client
 		function callNewMSG(){
 			$('.refreshing_list').show();
-			$.post('http://10.60.0.75:8089/appriz/getMessagesByClient',{"idSecretClient": idScretClient},function(data){
+			$.post('http://'+IP+':8089/appriz/getMessagesByClient',{"idSecretClient": idScretClient},function(data){
 				alert(JSON.stringify(data));
 				$.each(data,function(index, message){
 					
@@ -223,24 +245,32 @@
 			},'json') .fail(function(e) {
 					$('.refreshing_list').css({"background-color" : "#888"}).html('Conexion error!').hide(1000,function(){$('.refreshing_list').css({"background-color" : "#F5F5Ff"}).html('Refreshing list');});
 			
-				//alert( JSON.stringify(e));
+				//alert( JSON.stringify(e));getRules(kilomanyaroB)
 			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
 		}
 		
-		function getRules(){
+		function getRules(productName){
 		
-				$.post('http://10.60.0.75:8089/appriz/getRulesByProduct',{"idSecretClient": idScretClient,"productName":"kilomanyaroB",},function(data){
-				alert(JSON.stringify(data));
-				//$.each(data,function(index, message){
-					
+				$.post('http://'+IP+':8089/appriz/getRulesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
+					if (data["status"]== 200){
+						addRules(data["rules"]);
+					}
 				
-					//var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-						//$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"'><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
-						
-				//});
 			},'json') .fail(function(e) {
-					$('.refreshing_list').css({"background-color" : "#888"}).html('Conexion error!').hide(1000,function(){$('.refreshing_list').css({"background-color" : "#F5F5Ff"}).html('Refreshing list');});
+					alert("conexion error!");
+				//alert( JSON.stringify(e));
+			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
 			
+		}
+		
+		function getValidTimePeriods(){
+					$.post('http://'+IP+':8089/appriz/getTimePeriods',{"secretKey" : "53E9DD3F-3891-476B-B0BD-039E4CE87C79"},function(data){
+					if (data["status"]== 200){
+						SPickerString = timePicker(data["periods"]);
+					}
+				
+			},'json') .fail(function(e) {
+					alert("conexion error!");
 				//alert( JSON.stringify(e));
 			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
 			
@@ -263,6 +293,13 @@
 		
 		//NAVEGATION BAR
 		$('.principal_menu .fa').click(function(){
+			if(!$.isEmptyObject(rulesChanges)){
+				if (confirm("Save Changes") == true) {
+					processRuleChange();
+				} else {
+					rulesChanges = {};
+				}
+			}
 			$('.principal_menu .fa.active').removeClass('active');
 			$(this).addClass('active');
 			$('.view.active').hide().removeClass('active');
@@ -271,18 +308,25 @@
 			
 			$('.iconp ,.icons').hide();
 			$('#'+$(this).attr('iconp')+'').show();
-			$('.vertical_menu').hide();
+			$('.vertical_menu,#config_rules,#service_luncher').hide();
 			$('.vertical_menu').hide();
 			$('.management').hide();
 			$('#detail_msg').hide();
-		})
+		});
 		
 		
 	
 		
-		//Back from detail msg to list
+		//Back from detail msg to list or from rules config to productos list
 			$(".fa.fa-arrow-circle-o-left.iconp").click(function(){
 				$(this).hide();
+				if(!$.isEmptyObject(rulesChanges)){
+					if (confirm("Save Changes?") == true) {
+						processRuleChange();
+					} else {
+						rulesChanges = {};
+					}
+				}
 				$('#detail_msg , #service_luncher , #config_rules').hide();
 				
 				$('.management').hide();
@@ -464,11 +508,13 @@
 			$(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
 		});
 		
-		
+	$.fn.hasAttr = function(name) {  
+		return this.attr(name) !== undefined;
+	};
 	//settings page
-	
 	$('.ui-last-child').click(function(){
 		$('#'+$(this).attr('view')).show();
+		if($(this).hasAttr('eval')){eval($(this).attr('eval'));}
 		$(".fa.fa-arrow-circle-o-left.iconp").show();
 	});
 		
@@ -487,50 +533,41 @@
 			}
 	});
 	
+	//active rule
+	$( document ).on('change','input.toggle',function(){
+		var rId = $(this).parent().parent().attr('id').replace(/rule_(\S+)/,"$1");
+		console.log(rId);
+		if($(this).is(":checked")){
+			console.log('checked');
+			$(this).parent().parent().find('table input').each(function(){
+				console.log('table input');
+				addRuleChange(rId,$(this).attr('field'),$(this).val() == "" ? $(this).attr("placeholder") : $(this).val());
+				
+			});
+			$(this).parent().parent().find('table option:selected').each(function(){
+				addRuleChange(rId,'idTime',$(this).val());
+			});
+
+		}else{
+			rulesChanges[rId] = {"idRule" : rId} // disable rule
+		}
+	});
+	
 	//change values on rule description
 	$(document).on('keyup','.rule_body input',function(){
 		$(this).parent().parent().parent().parent().parent().parent().find($(this).attr('field')).html($(this).val());
+		addRuleChange($(this).parent().parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),$(this).attr('field'),$(this).val());
 	});
 	
-	tmpR = {
-    "status": 200,
-    "rules": [{
-        "idRule": "Jd6NoTij3xTDF9WurjcOKt37hkwf2auTinKnsrhUHtulfv+hnAFH43BxYo+0nrynehvBCvWiFGDf3U0GytB407Ovb+G9RhZTByorVsaPWPI15wqpbijpnRVHgY0pIVl1rjZYPkvU+p9EXW+h7rx+/h3D04SR6nypfeehG4xFgKaGXgUENj6wCKvON980CQ4o",
-        "ruleName": "Monto Individual",
-        "description": "Notificarme cuando realice una transacción por un monto superior a $<[singleAmount]>.",
-        "singleAmount": 75
-    }, {
-        "idRule": "z52I/ayONskbgvh887bNWId74MDgWVEIrLwdh0L8pXZF6EecIJQEpcg1W2ON6j6ktXiz+peZE9WnT9AzSKjJEPe9AGaRQqybu0qDjA8GZnyoN9uylYrk3d98pys9XwPia3pMqKdNcA2kT93zURMigcvJICqXYOhpBDo25CKSlD5z1kgNDaer9V0jpxmx40XS",
-        "ruleName": "Cantidad de Transacciones",
-        "description": "Notificarme cuando realice más de <[trxNo]> transacciones",
-        "trxNo": 2,
-        "idTime": 5
-    }, {
-        "idRule": "Sr03X6U3hzXPM6HcYatRUK9XNDV75jF4mrEd2BCAs6M3NfPZRCqelacrB9HTAehbABIw+mRea4LEr2TReuU/Ql/WofVxh43D/nTOhjxarXcQwe07lrtdpGTMN1d/P8+hW7ceaVzuZEVWiO2vzavLWne0DGmXZJKPrcwHfgPQsbVHHJhb6khbByLlMbkXxDLf",
-        "ruleName": "Monto Acumulado",
-        "description": "Notificarme cuando el monto acumulado de transacciones supere los $<[totalAmount]> en los últimos <[idTime]>.",
-        "totalAmount": 150,
-        "idTime": 5
-    }, {
-        "idRule": "g6h265UCmP66bGsZe6DD9pxLs/G/WEx9y7YjiIrNWmiVb4gNXL17BnDLecAhYNbFxli9CEUSs0nAW9UWweVV1SR9r8i+LdJsF6XsD78CJ1nS8A5f2nH00gejahu+JwELMESIopYnA71JHySLU8nS7Qqtz1QHbz36/amnqeor5I8iKyJ05x86fh949wJK/W3n",
-        "ruleName": "Catidad y Monto de Transacciones",
-        "description": "Notificarme cuando realice más de <[trxNo]> transacciones cuyo monto supere los $<[totalAmount]> en los últimos <[idTime]>.",
-        "totalAmount": 300,
-        "trxNo": 3,
-        "idTime": 5
-    }, {
-        "idRule": "6NhhqizDD4TkwCX7OwlVNt74zWuWaC9yOUcX1JN6mZ2a06sTJ6VKm9YofjlMJpZ+boUyYEz1dXK6p1p9HMGS3bJcgMrEw6ePBEp0mwYJkaKUFedC6z0a/SGSuIERDNPVRolKFgpeVpPw7UCkhqGXKso/MF8hZVsOoH3n7BfiC81qNhYvL2O0uGfCQ+w4gVzf",
-        "ruleName": "Diferencia porcentual",
-        "description": "Notificarme la tasa de interés de la tarjeta presente una variación de un <[varation]> %.",
-        "varation": 10
-    }, {
-        "idRule": "rDXM9yJ6hxodcCQQvlwzBlWyrGY/Q682qIBppYyZRpILYS9OQ95yxQ9pMMuqoeZTpQbTMsHm5yYUXW21Ryl5I0G/VL5VdUjPK91xj7MFeBaZJ4mIJFPrh6g3YF2w5HmU5nO9feIOci95vz/fUuTXZxKnnYm2I4z4gc8I9O/9I63D1bsCUEfeceSpeVR2b23L",
-        "ruleName": "MTindividiual",
-        "description": "252",
-        "trxNo": 25,
-        "idTime": 6
-    }]
-};
-	addRules(tmpR["rules"]);
+	$(document).on('change','.SelectStyle',function(){
+		$(this).parent().parent().parent().parent().parent().parent().find('idTime').html($(this).find('option:selected').html());
+		$(this).css({"color" : "#1A73B6"});
+		addRuleChange($(this).parent().parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),'idTime',$(this).find('option:selected').val());
+	});
+	
+	
+	
+
+	
 	</script>
 </html>
