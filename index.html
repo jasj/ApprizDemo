@@ -208,15 +208,7 @@
 				rulesChanges[idRule][field] = value;
 		}
 		
-		function processRuleChange(){
-			 var tmp_ruleChange = [];
-			for ( ruleChange in rulesChanges){
-				tmp_ruleChange.push(rulesChanges[ruleChange]);
-			}
-			rulesChanges = {};
-			console.log(JSON.stringify(tmp_ruleChange));
-			return tmp_ruleChange;
-		}
+
 		
 		function timePicker(objs){
 			timePickerString = '<fieldset class="ui-field-contain">';
@@ -272,8 +264,29 @@
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
-			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
+			}).done(function(){});
 			
+		}
+		
+		function processRuleChange(){
+			 var tmp_ruleChange = [];
+			for ( ruleChange in rulesChanges){
+				tmp_ruleChange.push(rulesChanges[ruleChange]);
+			}
+			rulesChanges = {};
+			console.log(JSON.stringify(tmp_ruleChange));
+			
+			$.post('http://'+IP+':8089/appriz/setRulesByProduct',{"idSecretClient": idScretClient,"productName":"kilomanyaroB", "rules":tmp_ruleChange},function(data){
+					if (data["status"]== 200){
+						SPickerString = timePicker(data["periods"]);
+					}
+				
+			},'json') .fail(function(e) {
+					alert("conexion error!");
+				//alert( JSON.stringify(e));
+			}).done(function(){});
+			
+			return tmp_ruleChange;
 		}
 		
 		//-------------------------------------------------------//
@@ -566,7 +579,7 @@
 	});
 	
 	
-	
+	getValidTimePeriods();
 
 	
 	</script>
