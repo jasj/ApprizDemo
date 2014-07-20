@@ -68,5 +68,13 @@ tmpT = {
         "unit": "Minute(s)"
     }]
 };
+
+products = {
+    "status": 200,
+    "products": {
+        "kilomanyaroB": "TarjetaCredito",
+        "sanduBoxB": "soundGood"
+    }
+}
 	SPickerString = timePicker(tmpT["periods"]);
 	addRules(tmpR["rules"]);
