@@ -54,7 +54,24 @@
 		
 		<div id='github_tab' class='view'>
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
-			<input type='button' value='flush memorie' onclick='$.jStorage.deleteKey("msg_div")'/>
+			<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")'/>
+			<frameset>
+				<legend>Client Info:</legend>
+					<table id="lab_client">
+						<tr><th>Identification</th><td><input id='lab_input_id' /></td></tr>
+						<tr><th>First Name</th><td><input id='lab_input_first'/></td></tr>
+						<tr><th>Last Name</th><td><input id='lab_input_lastname'/></td></tr>
+						<tr><th>UUID</<th><td><input id='lab_input_uuid'/></td></th></tr>
+						<tr><th>Phone</th><th><input id='lab_input_phone'/></th></tr>
+						<tr><th>S.O</th><th><input id='lab_input_id'/></th></tr>
+					</table>
+			</frameset>
+			<frameset>
+				<legend>Products:</legend>
+					<table id="lab_products">
+					</table>
+				
+			</frameset>
 		</div>
 		
 		<div id='config_tab' class='view'>
@@ -636,7 +653,9 @@
 	
 	
 	
-	//sim
+	//sphone bring
+	
+	$('#lab_input_uuid').val(device.uuid);
 	
 	
 	
