@@ -138,7 +138,7 @@
 		//---------------------------------------------------------------------------------------------------------------------//
 		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
 		rulesChanges = {};
-		IP = '192.168.1.7';
+		IP = '10.60.0.75';
 		
 		function addRules(objs){
 			var toAppend = '';
@@ -396,6 +396,7 @@
 				   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
 						//read message
 						$(this).removeClass('unread');
+						$.jStorage.set('msg_div', btoa($('#message_div').html()));
 						$("#shortMSG").html($(this).find('td').eq(0).html());
 						$("#longMSG").html($(this).attr('longMSG'));
 						$('.iconp').hide();
@@ -504,6 +505,7 @@
 				   if((phase === $.fn.swipe.phases.PHASE_END || phase === $.fn.swipe.phases.PHASE_CANCEL )& distance == 0)  {
 						//read message
 						$(this).removeClass('unread');
+						 $.jStorage.set('msg_div', btoa($('#message_div').html())); 
 						$("#shortMSG").html($(this).find('td').eq(0).html());
 						$("#longMSG").html($(this).attr('longMSG'));
 						$('.iconp').hide();
@@ -624,12 +626,14 @@
 	});
 	//load past
 	try{
-	$('#message_div').html(atob($.jStorage.get('msg_div')));
+		if($.jStorage.index().indexOf('msg_div') > -1){
+		$('#message_div').html(atob($.jStorage.get('msg_div')));}
 	}
 	catch(e){}
+	getValidTimePeriods();
 	callNewMSG();
 	makeSwipe();
-	getValidTimePeriods();
+	
 	
 	
 	//sim
