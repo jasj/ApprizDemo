@@ -54,7 +54,10 @@
 		
 		<div id='github_tab' class='view'>
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
+			 <p id="deviceProperties">Loading device properties...</p>
+
 			<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")'/>
+			
 			<frameset>
 				<legend>Client Info:</legend>
 					<table id="lab_client">
@@ -655,7 +658,24 @@
 	
 	//sphone bring
 	
-	$('#lab_input_uuid').val(device.uuid);
+	//$('#lab_input_uuid').val(device.uuid);
+	
+	 // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                            'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                            'Device Platform: ' + device.platform + '<br />' + 
+                            'Device UUID: '     + device.uuid     + '<br />' + 
+                            'Device Version: '  + device.version  + '<br />';
+    }
+
 	
 	
 	
