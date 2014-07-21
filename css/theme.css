@@ -284,7 +284,9 @@ height : 18px;
 	border: 1px solid #DDD;
 	
 	width: 100%;
-	height: 100px;
+	height: 100%;
+	
+	overflow-y: auto;
 }
 .ui-btn{
     background-color: #F6F6F6;
@@ -461,6 +463,8 @@ box-shadow: inset 0 0 0 1px rgba(19,191,17,1), 0 2px 4px rgba(0,0,0,.2);
 
 .view_container{
 	width: 100%;
+	height: 100%;
+	overflow-y: auto;
 }
 
 .SelectStyle {
@@ -511,7 +515,7 @@ background-position: center center;
 box-sizing: border-box; /* Opera/IE 8+ */
 }
 
-div.product{
+div.product , div.service{
 	width: 100%;
 	padding:10px;
 	
@@ -520,7 +524,7 @@ div.product{
 	background-color: #fcfcfc;
 }
 
-div.product:hover{
+div.product:hover , div.service:hover{
 	background-color: #f6f6f6;
 	color: #1A73B6;
 }

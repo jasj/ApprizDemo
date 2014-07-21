@@ -63,7 +63,7 @@
 			<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style='background-color: #fefefe !important;'>
             </br>&nbsp;
 			</br>&nbsp;
-			<li class="ui-last-child" view='service_luncher'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
+			<li class="ui-last-child" view='products' eval='getProducts("services")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
 			</br>&nbsp;
 			</br>&nbsp;
 			
@@ -90,17 +90,18 @@
 			</div>
 			
 		<div id='config_rules' class='view' iconp="back">
-			<div style='width:100%;' class="internal_header"><p class='title' > My Alerts</p></div>
+			<div style='width:100%; margin-top:10px !important;' class="internal_header" ><p class='title' > My Alerts</p></div>
 			<div id='rules_div' class='view_container'></div>
 		</div>
 		
 		<div id='products' class='view' iconp="back">
-			<div style='width:100%;' class="internal_header"><p class='title' > My Alerts<i class="fa fa-angle-double-right"></i>Products </p></div>
+			<div style='width:100%;' class="internal_header"><p class='title' ></div>
 			<div id='products_div' class='view_container'></div>
 		</div>
 		
 		<div id='service_luncher' class='view' iconp="back">
 			<div style='width:100%;  ' class="internal_header"><p class='title' > Services</p></div>
+			<div id='service_div' class='view_container'></div>
 		</div>
 		
 		<div class='vertical_menu'>
@@ -164,9 +165,18 @@
 			
 			$('#products_div').html('');
 			for( product in products){
-				$('#products_div').append('<div class="product">'+product+'</div>');
+				$('#products_div').append('<div class="product '+view+'">'+product+'</div>');
 			}
 			$('products_div').append("<div style='width: 100%; height: 150px;'></div>");
+		}
+		
+		function addServices(services){
+			
+			$('#service_div').html('');
+			for( service in services){
+				$('#service_div').append('<div class="service">'+services[service]+'</div>');
+			}
+			$('service_div').append("<div style='width: 100%; height: 150px;'></div>");
 		}
 		
 		
@@ -225,6 +235,21 @@
 			
 		}
 		
+		
+			function getServices(productName){
+		
+				$.post('http://'+IP+':8089/appriz/getServicesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
+					if (data["status"]== 200){
+						addServices(data["services"]);
+					}
+				
+			},'json') .fail(function(e) {
+					alert("conexion error!");
+				//alert( JSON.stringify(e));
+			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
+			
+		}
+		
 			function getProducts(view){
 		
 				$.post('http://'+IP+':8089/appriz/getProductsByClient',{"idSecretClient": idScretClient,"view":view,},function(data){
@@ -235,7 +260,7 @@
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
-			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
+			}).done(function(){$('#products p.title').html((view == 'rules' ? 'My Alerts' : 'Services')+'<i class="fa fa-angle-double-right"></i>Products </p>')});
 			
 		}
 		
@@ -305,7 +330,7 @@
 			
 			$('.iconp ,.icons').hide();
 			$('#'+$(this).attr('iconp')+'').show();
-			$('.vertical_menu,#config_rules,#service_luncher').hide();
+			$('.vertical_menu,#config_rules,#service_luncher , div#products').hide();
 			$('.vertical_menu').hide();
 			$('.management').hide();
 			$('#detail_msg').hide();
@@ -324,7 +349,7 @@
 						rulesChanges = {};
 					}
 				}
-				$('#detail_msg , #service_luncher , #config_rules').hide();
+				$('#detail_msg , #service_luncher , #config_rules , div#products').hide();
 				
 				$('.management').hide();
 				
@@ -520,12 +545,18 @@
 		  
 		 //getRules();
 		 
-	$(document).on('click','div.product',function(){
+	$(document).on('click','div.product.rules',function(){
 		getRules($(this).html());
 		$('#config_rules').show();
 		$('div#products').hide();
-		
-		
+		$('#config_rules p.title').html('My Alerts <i class="fa fa-angle-double-right"></i> '+$(this).html());
+	});
+	
+	$(document).on('click','div.product.services',function(){
+		getServices($(this).html());
+		$('#service_luncher').show();
+		$('div#products').hide();
+		$('#service_luncher p.title').html('Services <i class="fa fa-angle-double-right"></i> '+$(this).html());
 	});
 
 		 //open rules details
