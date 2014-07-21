@@ -14,6 +14,7 @@
 		
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/swipe.js"></script>
+		<script src="js/jqstorage.js"></script>
 		
 
 		
@@ -47,15 +48,13 @@
 		<div id='message_tab' class='view'>
 			<div style='width:100%;  ' class="internal_header"><p class='title' > Inbox</p></div>
 			<div class='refreshing_list'><i class="fa fa-spinner fa-spin"></i> Refreshing ...</div>
+			<div id='message_div' class='view_container'></div>
 		
 		</div>
 		
 		<div id='github_tab' class='view'>
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
-			
-			<div class='refreshing_list'><i class="fa fa-spinner fa-spin"></i> Refreshing ...</div>
-			<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div class='message unread' id='' longMSG="dead text bllblblba lbnlblb lblblb 00001" services='eyJHRVMwMDEiOiJDYWxsIG1lISIsIkdFUzAwMiI6ImNhbGwgeW91ISJ9'><img src='img/ic_90_iPhone_ios7_myalerts.png'/><table><tr><td>Shor message go here</td></tr><tr><td><i class="fa fa-calendar"></i>12 jun 2014 16:00:00</td></tr></table></div>
-
+			<input type='button' value='flush memorie' onclick='$.jStorage.deleteKey("msg_div")'/>
 		</div>
 		
 		<div id='config_tab' class='view'>
@@ -78,10 +77,10 @@
 				<img width='60px' class='typeIcon'></img>
 				<p style="text-align: justify; color: #000" id='longMSG'></p>
 			</div>
-			<div style='width:100%;  ' class="internal_header"><i class="fa fa-history" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;History<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
-			<div class='div_content' style='display: none;'></div>
-			<div style='width:100%;  ' class="internal_header"><i class="fa fa-random" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;Transacctions<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
-			<div class='div_content' style='display: none;'></div>
+			<div style='width:100%;  ' class="internal_header" view='history_view'><i class="fa fa-history" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;History<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
+			<div class='div_content history_view' style='display: none;'></div>
+			<div style='width:100%;  ' class="internal_header"  view='trx_view'><i class="fa fa-random" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;Transacctions<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
+			<div class='div_content trx_view' style='display: none; border: 1px solid #ddd; border-radius: 0 0 10px 10px; overflow-y: auto;' ></div>
 			
 			 
 			 <div class='management'><ul>
@@ -204,15 +203,16 @@
 		
 		//bring message for this client
 		function callNewMSG(){
+		date = new Date();
 			$('.refreshing_list').show();
 			$.post('http://'+IP+':8089/appriz/getMessagesByClient',{"idSecretClient": idScretClient},function(data){
-				alert(JSON.stringify(data));
 				$.each(data,function(index, message){
 					
 				
 					var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
-						$('#message_tab').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"'><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i>12 jun 2014 16:00:00</td></tr></table></div>");
+						$('#message_div').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"' appends='"+btoa(JSON.stringify(message['appends']))+"'><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i> "+date.toLocaleString()+" </td></tr></table></div>");
 						
+						$.jStorage.set('msg_div', btoa($('#message_div').html()));
 				});
 			},'json') .fail(function(e) {
 					$('.refreshing_list').css({"background-color" : "#888"}).html('Conexion error!').hide(1000,function(){$('.refreshing_list').css({"background-color" : "#F5F5Ff"}).html('Refreshing list');});
@@ -366,7 +366,7 @@
 					oneTimeSendAjax =false;
 					var msg = $(this);msg.prev().css({"width":  0});
 					msg.css({"margin-left": 0});
-					if(direction=='right' & distance > 250){msg.remove(); } else {msg.css({"margin-left": 0}) ;} 
+					if(direction=='right' & distance > 250){msg.remove(); $.jStorage.set('msg_div', btoa($('#message_div').html())); } else {msg.css({"margin-left": 0}) ;} 
 					
 				},
 				
@@ -404,11 +404,26 @@
 						$(".fa.fa-arrow-circle-o-left.iconp").show();
 						//Include services
 						   management = "";
+						   
+						   strAppends = "";
 						  var mpi = management;
 						  var array_serv = JSON.parse(atob(msg.attr('services')));
 							for(serv in  array_serv){
 								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
 							}
+							
+							var array_appends = JSON.parse(atob(msg.attr('appends')));
+							$.each(array_appends,function(key,value){
+								strAppends = strAppends + "<table>";
+								for( field in value){
+									if(field == "Fecha_Hora"){var dd = new Date(value[field]); strAppends = strAppends +"<tr><th>"+field+"</th><td>"+dd.toLocaleString()+"</td></tr>";} 
+									else strAppends = strAppends +"<tr><th>"+field+"</th><td>"+value[field]+"</td></tr>";}
+								strAppends = strAppends + "</table>";
+							});
+							
+							$('.trx_view').html(strAppends);
+							
+							
 							
 						
 						if(management == "") {$('.ui-btn.mng').hide(); }else{
@@ -447,7 +462,7 @@
 		
 		
 		
-		makeSwipe();
+		
 		
 		
 		//scroll and update
@@ -524,10 +539,12 @@
 		$( document).on('click','.internal_header .fa-plus-square-o',function(){
 			$(this).next('.div_content').show();
 			$(this).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+			$('.'+$(this).parent().attr('view')).show();
 		});
 		$( document).on('click','.internal_header .fa-minus-square-o',function(){
 			$(this).next('.div_content').hide();
 			$(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+			$('.'+$(this).parent().attr('view')).hide();
 		});
 		
 	$.fn.hasAttr = function(name) {  
@@ -595,15 +612,23 @@
 	$(document).on('keyup','.rule_body input',function(){
 		$(this).parent().parent().parent().parent().parent().parent().find($(this).attr('field')).html($(this).val());
 		addRuleChange($(this).parent().parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),$(this).attr('field'),$(this).val());
+		$(this).parent().parent().parent().parent().parent().parent().find('input[type=checkbox]').attr('checked','true');
 	});
 	
 	$(document).on('change','.SelectStyle',function(){
 		$(this).parent().parent().parent().parent().parent().parent().find('idTime').html($(this).find('option:selected').html());
 		$(this).css({"color" : "#1A73B6"});
 		addRuleChange($(this).parent().parent().parent().parent().parent().parent().attr('id').replace(/rule_(\S+)/,"$1"),'idTime',$(this).find('option:selected').val());
+		$(this).parent().parent().parent().parent().parent().parent().find('input[type=checkbox]').attr('checked','true');
+		
 	});
-	
-	
+	//load past
+	try{
+	$('#message_div').html(atob($.jStorage.get('msg_div')));
+	}
+	catch(e){}
+	callNewMSG();
+	makeSwipe();
 	getValidTimePeriods();
 	
 	
