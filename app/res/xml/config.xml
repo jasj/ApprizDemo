@@ -1,0 +1,19 @@
+    <?xml version="1.0" encoding="UTF-8" ?>
+	<widget id="api.appriz.mobile" version="0.0.1">
+        <name>ApprizDemo</name>
+        <description>
+            A sample Appriz applicaction
+        </description>
+        <author email="asegreda@smartsoftint.com" href="http://cordova.io">
+            Appriz Developer Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" subdomains="true"/>
+        <preference name="WebViewBounce" value="true" />
+		
+		<feature name="Device">
+			<param name="android-package" value="org.apache.cordova.device.Device" />
+		</feature>
+
+    </widget>
+
