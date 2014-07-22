@@ -64,7 +64,7 @@ permission on your app, which PhoneGap requires.
 -->
 
     <!-- Define app icon for each platform. -->
-    <icon src="icon.png" />
+    <icon src="img/logo.png" />
     
 
     <!-- Define app splash screen for each platform. 
@@ -96,5 +96,3 @@ Otherwise, you can specify specific domains:
 -->
 
 </widget>
-
-	<icon src="img/logo.png" />
