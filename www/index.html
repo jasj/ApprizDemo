@@ -73,10 +73,13 @@
 			</frameset>
 			<hr>
 			<frameset>
-				<legend>Products: <input type='button' value=' Add product' style='font-family: FontAwesome' onclick='$("#lab_products").append("<tr><td><input></td><td><select><option value=\"TarjetaCredito\">TarjetaCredito</option><option value=\"TarjetaDebito\">TarjetaDebito</option></select></td></tr>")'/></legend>
+				<legend>Products: <input type='button' value=' Add product' style='font-family: FontAwesome' onclick='$("#lab_products tbody").append("<tr><td><input/></td><td><select><option value=\"TarjetaCredito\">TarjetaCredito</option><option value=\"TarjetaDebito\">TarjetaDebito</option></select></td></tr>")'/></legend>
 				
 					<table id="lab_products">
 					<tr><th>Product</th><th>Type</th></tr>
+					<tbody>
+					</tbody>
+					
 					
 					</table>
 					
@@ -169,6 +172,7 @@
 	    //---------------------------------------------------------------------------------------------------------------------//
 		//                                        Phonegap APPRIZ-API SDK                                                      //
 		//---------------------------------------------------------------------------------------------------------------------//
+		var secretKey = '53E9DD3F-3891-476B-B0BD-039E4CE87C79';
 		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
 		rulesChanges = {};
 		IP = '10.60.0.75';
@@ -237,8 +241,8 @@
 		//BindClient
 		
 		function BindClient(identification,firstName,lastName,uuid,products){
-			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"products":products},function(data){
-					alert(JSON.stringify(data));
+			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"products":products,secretKey:secretKey},function(data){
+					console.log(JSON.stringify(data));
 			});
 		}
 		
@@ -309,7 +313,7 @@
 		}
 		
 		function getValidTimePeriods(){
-					$.post('http://'+IP+':8089/appriz/getTimePeriods',{"secretKey" : "53E9DD3F-3891-476B-B0BD-039E4CE87C79"},function(data){
+					$.post('http://'+IP+':8089/appriz/getTimePeriods',{"secretKey" : secretKey},function(data){
 					if (data["status"]== 200){
 						SPickerString = timePicker(data["periods"]);
 					}
@@ -701,8 +705,27 @@
     }
 
 	alert('loaded');
+	
+	
+	
+	//lab functions. Simulate  bank WS
+	function labProducts(){
+	var prd_lab_tmp = {};
+		$('#lab_products tbody tr').each(function(){
+			$(this).find('input').replaceWith($(this).find('input').val());
+			$(this).find('select').replaceWith($(this).find('option:selected').val());
+			
+			prd_lab_tmp[$(this).find('td').eq(0).html()] = $(this).find('td').eq(1).html();
+			
+			
+		});
+		console.log(JSON.stringify(prd_lab_tmp));
+		
+		return prd_lab_tmp;
+	}
 	$('#btn_bindClient').click(function(){
-			BindClient($('lab_input_id').val(),$('lab_input_first').val(),$('lab_input_lastname').val(),$('lab_input_uuid').val(),labProducts());
+	
+			BindClient($('#lab_input_id').val(),$('#lab_input_first').val(),$('#lab_input_lastname').val(),$('#lab_input_uuid').val(),labProducts());
 		});
 	
 	</script>
