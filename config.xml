@@ -8,20 +8,17 @@
             Appriz Developer Team
         </author>
         <content src="index.html" />
-        <access origin="*" subdomains="true"/>
+        
         <preference name="WebViewBounce" value="true" />
-		<preference name="orientation" value=" portrait" />
+	<preference name="orientation" value=" portrait" />
+	
+	<gap:plugin name="org.apache.cordova.device" />
 		
 		    <!-- Define app icon for each platform. -->
-    <icon src="img/logo.png" />
-    <gap:splash src="splash.png" />
-
-
- <feature name="Device">
-    <param name="android-package" value="org.apache.cordova.device.Device" />
-</feature>
+	 <icon src="img/logo.png" />
+  
 	
-    
+    	<access origin="*" subdomains="true"/>
 
    
     </widget>
