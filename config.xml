@@ -17,7 +17,9 @@
     <gap:splash src="splash.png" />
 
 
-   
+ <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device" />
+</feature>
 	
     
 
