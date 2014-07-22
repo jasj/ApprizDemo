@@ -58,25 +58,36 @@
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
 			 <p id="deviceProperties">Loading device properties...</p>
 
-			<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")'/>
+			
 			
 			<frameset>
 				<legend>Client Info:</legend>
 					<table id="lab_client">
-						<tr><th>Identification</th><td><input id='lab_input_id' /></td></tr>
-						<tr><th>First Name</th><td><input id='lab_input_first'/></td></tr>
-						<tr><th>Last Name</th><td><input id='lab_input_lastname'/></td></tr>
-						<tr><th>UUID</<th><td><input id='lab_input_uuid'/></td></th></tr>
-						<tr><th>Phone</th><th><input id='lab_input_phone'/></th></tr>
-						<tr><th>S.O</th><th><input id='lab_input_id'/></th></tr>
+						<tr><th>Identification</th><td><input id='lab_input_id' type='text'/></td></tr>
+						<tr><th>First Name</th><td><input id='lab_input_first' type='text'/></td></tr>
+						<tr><th>Last Name</th><td><input id='lab_input_lastname' type='text'/></td></tr>
+						<tr><th>UUID</<th><td><input id='lab_input_uuid' type='text'/></td></th></tr>
+						<tr><th>Phone</th><th><input id='lab_input_phone' type='text'/></th></tr>
+						<tr><th>S.O</th><th><input id='lab_input_id' type='text'/></th></tr>
 					</table>
 			</frameset>
+			<hr>
 			<frameset>
-				<legend>Products:</legend>
+				<legend>Products: <input type='button' value=' Add product' style='font-family: FontAwesome' onclick='$("#lab_products").append("<tr><td><input></td><td><select><option value=\"TarjetaCredito\">TarjetaCredito</option><option value=\"TarjetaDebito\">TarjetaDebito</option></select></td></tr>")'/></legend>
+				
 					<table id="lab_products">
+					<tr><th>Product</th><th>Type</th></tr>
+					
 					</table>
+					
+					<input id='btn_bindClient' type='button' value=' bindClient' style='font-family: FontAwesome'></input>
+					<hr>
+					<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")' style='background-color: #ff9090'/>
+					
 				
 			</frameset>
+			
+			<div style='height: 150px; width: 100%'></div>
 		</div>
 		
 		<div id='config_tab' class='view'>
@@ -222,6 +233,17 @@
 		//-------------------------------------------------------//
 		//                 		 API USE						 //
 		//-------------------------------------------------------//
+		
+		//BindClient
+		
+		function BindClient(identification,firstName,lastName,uuid,products){
+			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"products":products},function(data){
+					alert(JSON.stringify(data));
+			});
+		}
+		
+		
+		
 		
 		//bring message for this client
 		function callNewMSG(){
@@ -664,8 +686,6 @@
 	
 	 // Wait for PhoneGap to load
     //
-	
-	console.log(device.uuid);
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is ready
@@ -680,8 +700,10 @@
                             'Device Version: '  + device.version  + '<br />';
     }
 
-	
-	
+	alert('loaded');
+	$('#btn_bindClient').click(function(){
+			BindClient($('lab_input_id').val(),$('lab_input_first').val(),$('lab_input_lastname').val(),$('lab_input_uuid').val(),labProducts());
+		});
 	
 	</script>
 </html>

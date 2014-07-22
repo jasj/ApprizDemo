@@ -518,3 +518,25 @@ div.product:hover , div.service:hover{
 	background-color: #f6f6f6;
 	color: #1A73B6;
 }
+#github_tab {
+	padding: 4px;
+	padding-left; 10px;
+	overflow-y: auto;
+}
+#github_tab input {
+
+	padding : 4px;
+	border: 1px solid #ddd;
+	border-radius: 40px;
+}
+#github_tab input[type=button]{
+	width: 100%;
+}
+#github_tab input[type=button]:hover{
+	background-color: #f6f6ff;
+}
+
+
+legend{
+	color : #1A73B6;
+}
