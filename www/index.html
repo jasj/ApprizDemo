@@ -700,18 +700,19 @@
     //
     function onDeviceReady() {
 		alert('back');
+		console.log(device.name);
 		pushNotification = window.plugins.pushNotification;
-		
-		//if ( device.platform == 'android' || device.platform == 'Android' )
-		//{
+		console.log(device.platform);
+		if ( device.platform == 'android' || device.platform == 'Android' )
+		{
 			pushNotification.register(
 				successHandler,
 				errorHandler, {
 					"senderID":"125107308805",
 					"ecb":"onNotificationGCM"
 				});
-		//}
-		/*else
+		}
+		else
 		{
 			pushNotification.register(
 				tokenHandler,
@@ -721,7 +722,7 @@
 					"alert":"true",
 					"ecb":"onNotificationAPN"
 				});
-		}*/
+		}
 		
         var element = document.getElementById('deviceProperties');
 
