@@ -56,10 +56,8 @@
 		
 		<div id='github_tab' class='view'>
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
+		<div id='lab_div' class='view_container'>
 			 <p id="deviceProperties">Loading device properties...</p>
-
-			
-			
 			<frameset>
 				<legend>Client Info:</legend>
 					<table id="lab_client">
@@ -91,6 +89,7 @@
 			</frameset>
 			
 			<div style='height: 150px; width: 100%'></div>
+			</div>
 		</div>
 		
 		<div id='config_tab' class='view'>
@@ -164,6 +163,7 @@
 	</body>
 	
 	<script>
+	var pushNotification;
 	//---------------------------------------------//
 	// for PC BROWSER SUPPORT  CORDS
 	//----------------------------------------------
@@ -676,6 +676,9 @@
 	try{
 		if($.jStorage.index().indexOf('msg_div') > -1){
 		$('#message_div').html(atob($.jStorage.get('msg_div')));}
+		if($.jStorage.index().indexOf('lab_div') > -1){
+		$('#lab_div').html(atob($.jStorage.get('lab_div')));}
+		
 	}
 	catch(e){}
 	getValidTimePeriods();
@@ -695,6 +698,9 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
+		alert('back');
+		pushNotification = window.plugins.pushNotification;
+		
         var element = document.getElementById('deviceProperties');
 
         element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
@@ -724,9 +730,11 @@
 		return prd_lab_tmp;
 	}
 	$('#btn_bindClient').click(function(){
-	
+			 $.jStorage.set('lab_div', btoa($('#lab_div').html())); 
 			BindClient($('#lab_input_id').val(),$('#lab_input_first').val(),$('#lab_input_lastname').val(),$('#lab_input_uuid').val(),labProducts());
 		});
+		
+		
 	
 	</script>
 </html>
