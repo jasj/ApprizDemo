@@ -22,6 +22,12 @@ following tag to your config.xml; you will still have the INTERNET
 permission on your app, which PhoneGap requires.
 -->
     <preference name="permissions" value="none"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+<permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+<uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
 
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version" value="3.3.0" /> <!-- all: current version of PhoneGap -->
@@ -55,6 +61,8 @@ permission on your app, which PhoneGap requires.
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
+	
+	<plugin name="PushPlugin" value="com.plugin.gcm.PushPlugin" />
  
 
     <!-- Third party plugins -->
