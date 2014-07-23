@@ -702,7 +702,7 @@
 		alert('back');
 		pushNotification = window.plugins.pushNotification;
 		
-		if ( device.platform == 'android' || device.platform == 'Android' )
+		//if ( device.platform == 'android' || device.platform == 'Android' )
 		{
 			pushNotification.register(
 				successHandler,
@@ -710,8 +710,8 @@
 					"senderID":"125107308805",
 					"ecb":"onNotificationGCM"
 				});
-		}
-		else
+		//}
+		/*else
 		{
 			pushNotification.register(
 				tokenHandler,
@@ -721,7 +721,7 @@
 					"alert":"true",
 					"ecb":"onNotificationAPN"
 				});
-		}
+		}*/
 		
         var element = document.getElementById('deviceProperties');
 
