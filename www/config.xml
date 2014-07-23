@@ -54,7 +54,11 @@ permission on your app, which PhoneGap requires.
 
     <!-- Define app icon for each platform. -->
     <icon src="img/logo.png" />
-    <gap:splash src="img/Splash.png" 
+   
+   
+   <feature name="Device">
+		<param name="android-package" value="org.apache.cordova.device.Device" />
+	</feature>
 
     <!-- Define app splash screen for each platform. 
 
@@ -85,8 +89,6 @@ Otherwise, you can specify specific domains:
 <access origin="http://phonegap.com" browserOnly="true" /> - only allows http://phonegap.com to be opened by the child browser.
 -->
 
-<feature name="Device">
-    <param name="android-package" value="org.apache.cordova.device.Device" />
-</feature>
+
 
 </widget>
