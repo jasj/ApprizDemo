@@ -702,7 +702,9 @@
     //
     function onDeviceReady() {
 		alert('back');
-		alert(device.model);
+		try{
+			alert(device.model);
+		}catch(error){alert(error);}
 		alert('back');
 		pushNotification = window.plugins.pushNotification;
 		console.log(device.platform);
