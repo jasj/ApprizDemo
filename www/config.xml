@@ -43,10 +43,6 @@ permission on your app, which PhoneGap requires.
     <gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin"  />
 	
-	 <feature name="Device">
-		<param name="android-package" value="org.apache.cordova.device" />
-	</feature>
-	
 	
 	<gap:config-file platform="android" parent="/manifest">
 		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
