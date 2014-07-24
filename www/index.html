@@ -61,7 +61,9 @@
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
 		<div id='lab_div' class='view_container'>
 			 <p id="deviceProperties">Loading device properties...</p>
+			 <hr>
 			 <div id="app-status-ul"></div>
+			 <hr>
 			<frameset>
 				<legend>Client Info:</legend>
 					<table id="lab_client">
@@ -702,13 +704,19 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
-		alert('back');
 		try{
 			alert(device.model);
+			
+			 var element = document.getElementById('deviceProperties');
+        element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+
 		}catch(error){alert(error);}
-		alert('back');
+	
 		pushNotification = window.plugins.pushNotification;
-		console.log(device.platform);
 		
 		if ( device.platform == 'android' || device.platform == 'Android' )
 		{
