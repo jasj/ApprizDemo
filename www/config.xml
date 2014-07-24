@@ -49,7 +49,7 @@ permission on your app, which PhoneGap requires.
 	
 	
 	<gap:config-file platform="android" parent="/manifest">
-		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+		<uses-permission android:name="android.permission.RECEIVE_SMS" />
 	</gap:config-file>
 
     <!-- Third party plugins -->
