@@ -62,7 +62,7 @@
 		<div id='lab_div' class='view_container'>
 			 <p id="deviceProperties">Loading device properties...</p>
 			 <hr>
-			 <div id="app-status-ul"></div>
+			 <div id="app-status-ul" style='width:100%; overflow-x: auto;'></div>
 			 <hr>
 			<frameset>
 				<legend>Client Info:</legend>
@@ -170,6 +170,7 @@
 	
 	<script>
 	var pushNotification;
+	eregid = "123";
 	//---------------------------------------------//
 	// for PC BROWSER SUPPORT  CORDS
 	//----------------------------------------------
@@ -246,8 +247,9 @@
 		
 		//BindClient
 		
-		function BindClient(identification,firstName,lastName,uuid,products){
-			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"products":products,secretKey:secretKey},function(data){
+		function BindClient(identification,firstName,lastName,uuid,regId,products){
+			alert('b');
+			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"regId" :regId,"products":products,secretKey:secretKey},function(data){
 					console.log(JSON.stringify(data));
 			});
 		}
@@ -775,8 +777,9 @@ function errorHandler (error) {
 		return prd_lab_tmp;
 	}
 	$('#btn_bindClient').click(function(){
-			 $.jStorage.set('lab_div', btoa($('#lab_div').html())); 
-			BindClient($('#lab_input_id').val(),$('#lab_input_first').val(),$('#lab_input_lastname').val(),$('#lab_input_uuid').val(),labProducts());
+	//		 $.jStorage.set('lab_div', btoa($('#lab_div').html()));
+alert('a');	
+			BindClient($('#lab_input_id').val(),$('#lab_input_first').val(),$('#lab_input_lastname').val(),$('#lab_input_uuid').val(),eregid,labProducts());
 		});
 		
 		
@@ -789,6 +792,7 @@ function onNotificationGCM(e) {
     case 'registered':
         if ( e.regid.length > 0 )
         {
+			eregid = e.regid
             $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
             // Your GCM push server needs to know the regID before it can push to this device
             // here is where you might want to send it the regID for later use.
