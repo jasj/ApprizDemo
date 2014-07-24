@@ -702,9 +702,11 @@
     //
     function onDeviceReady() {
 		alert('back');
-		alert(window.device.name);
+		alert(device.model);
+		alert('back');
 		pushNotification = window.plugins.pushNotification;
 		console.log(device.platform);
+		
 		if ( device.platform == 'android' || device.platform == 'Android' )
 		{
 			pushNotification.register(
@@ -728,11 +730,7 @@
 		
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
-                            'Device PhoneGap: ' + device.phonegap + '<br />' + 
-                            'Device Platform: ' + device.platform + '<br />' + 
-                            'Device UUID: '     + device.uuid     + '<br />' + 
-                            'Device Version: '  + device.version  + '<br />';
+       
     }
 
 	alert('loaded');
