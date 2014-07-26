@@ -278,6 +278,17 @@ height : 18px;
 }
 
 
+.div_content2{
+	background-color: #FAFAFA;
+	border: 1px solid #DDD;
+	
+	width: 100%;
+	height: calc(100% - 270px);
+	
+	overflow-y: auto;
+	
+	
+}
 
 .div_content{
 	background-color: #FAFAFA;
@@ -287,6 +298,7 @@ height : 18px;
 	height: 100px;
 	
 	overflow-y: auto;
+
 }
 .ui-btn{
     background-color: #F6F6F6;
@@ -539,4 +551,12 @@ div.product:hover , div.service:hover{
 
 legend{
 	color : #1A73B6;
+}
+
+.trx_view table{
+	border-bottom: 1px solid #DDD;
+	font-size : 12px;
+	 margin-left: auto;
+	 margin-right: auto;
+	 width: 100%;
 }
