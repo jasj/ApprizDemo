@@ -171,6 +171,11 @@
 	<script>
 	var pushNotification;
 	eregid = "123";
+	currentProduct = "kilomanyaroB";
+	var secretKey = '53E9DD3F-3891-476B-B0BD-039E4CE87C79';
+	var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
+	rulesChanges = {};
+	IP = '192.168.1.17';
 	//---------------------------------------------//
 	// for PC BROWSER SUPPORT  CORDS
 	//----------------------------------------------
@@ -179,10 +184,7 @@
 	    //---------------------------------------------------------------------------------------------------------------------//
 		//                                        Phonegap APPRIZ-API SDK                                                      //
 		//---------------------------------------------------------------------------------------------------------------------//
-		var secretKey = '53E9DD3F-3891-476B-B0BD-039E4CE87C79';
-		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
-		rulesChanges = {};
-		IP = '192.168.1.17';
+		
 		
 		function addRules(objs){
 			var toAppend = '';
@@ -216,8 +218,10 @@
 		function addServices(services){
 			
 			$('#service_div').html('');
+			 console.log(JSON.stringify(services));
 			for( service in services){
-				$('#service_div').append('<div class="service">'+services[service]+'</div>');
+			
+				$('#service_div').append('<div class="service" service="'+service+'">'+services[service]+'</div>');
 			}
 			$('service_div').append("<div style='width: 100%; height: 150px;'></div>");
 		}
@@ -267,10 +271,12 @@
 				$.each(data,function(index, message){
 					
 				
-					var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" : "img/ic_90_iPhone_ios7_publicidad.png";
+					var img_msg = message['type'] == 1 ? "img/ic_90_iPhone_ios7_myalerts.png"  : message['type'] == 2 ? "img/ic_90_iPhone_ios7_alerts.png" : message['type'] == 3 ? "img/ic_90_iPhone_ios7_notific.png" :  message['type'] == 4 ?  "img/ic_90_iPhone_ios7_publicidad.png" : "img/ic_90_iPhone_ios7_gestion.png";
 						$('#message_div').append("<div class='delete_indicator'>Delete&nbsp;&nbsp; </div><div  class='message unread' id='"+message['idMessage']+"' longMSG='"+message['longMessage']+"' services='"+btoa(JSON.stringify(message['services']))+"' appends='"+btoa(JSON.stringify(message['appends']))+"'><img src='"+img_msg+"'/><table><tr><td>"+message['shortMessage']+"</td></tr><tr><td><i class='fa fa-calendar'></i> "+date.toLocaleString()+" </td></tr></table></div>");
 						
 						$.jStorage.set('msg_div', btoa($('#message_div').html()));
+						makeSwipe();
+						console.log(JSON.stringify(data));
 				});
 			},'json') .fail(function(e) {
 					$('.refreshing_list').css({"background-color" : "#888"}).html('Conexion error!').hide(1000,function(){$('.refreshing_list').css({"background-color" : "#F5F5Ff"}).html('Refreshing list');});
@@ -308,6 +314,19 @@
 			
 		}
 		
+			function requestService(serviceObj){
+				$.post('http://'+IP+':8089/appriz/sendServiceRequest',$.extend({"idSecretClient": idScretClient},serviceObj),function(data){
+					if (data["status"]== 200){
+						alert('Sucessfull!');
+					}
+				
+				},'json') .fail(function(e) {
+					alert("conexion error!");
+				//alert( JSON.stringify(e));
+				}).done(function(){});
+			}
+		
+		
 			function getProducts(view){
 		
 				$.post('http://'+IP+':8089/appriz/getProductsByClient',{"idSecretClient": idScretClient,"view":view,},function(data){
@@ -343,7 +362,7 @@
 			rulesChanges = {};
 			console.log(JSON.stringify(tmp_ruleChange));
 			
-			$.post('http://'+IP+':8089/appriz/setRulesByProduct',{"idSecretClient": idScretClient,"productName":"kilomanyaroB", "rules":tmp_ruleChange},function(data){
+			$.post('http://'+IP+':8089/appriz/setRulesByProduct',{"idSecretClient": idScretClient,"productName": currentProduct, "rules":tmp_ruleChange},function(data){
 					if (data["status"]== 200){
 						SPickerString = timePicker(data["periods"]);
 					}
@@ -471,6 +490,7 @@
 								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
 							}
 							
+							try{
 							var array_appends = JSON.parse(atob(msg.attr('appends')));
 							$.each(array_appends,function(key,value){
 								strAppends = strAppends + "<table>";
@@ -479,10 +499,12 @@
 									else strAppends = strAppends +"<tr><th>"+field+"</th><td>"+value[field]+"</td></tr>";}
 								strAppends = strAppends + "</table>";
 							});
+							}
+							catch(e){$('div[view=trx_view]').hide();}
 							
 							$('.trx_view').html(strAppends);
 							
-							
+						if(strAppends == ""){$('div[view=trx_view]').hide();}else{$('div[view=trx_view]').show()};
 							
 						
 						if(management == "") {$('.ui-btn.mng').hide(); }else{
@@ -597,12 +619,12 @@
 		
 		//Control for sliders
 		$( document).on('click','.internal_header .fa-plus-square-o',function(){
-			$(this).next('.div_content').show();
+			$('.div_content2').hide();
 			$(this).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
 			$('.'+$(this).parent().attr('view')).show();
 		});
 		$( document).on('click','.internal_header .fa-minus-square-o',function(){
-			$(this).next('.div_content').hide();
+			$('.div_content2').hide();
 			$(this).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
 			$('.'+$(this).parent().attr('view')).hide();
 		});
@@ -619,9 +641,12 @@
 		
 		
 		
-		  
+		$(document).on('click','.product',function(){ 
+			currentProduct = $(this).html();
+			console.log(currentProduct);
+		});
 		 //getRules();
-		 
+	
 	$(document).on('click','div.product.rules',function(){
 		getRules($(this).html());
 		$('#config_rules').show();
@@ -694,6 +719,15 @@
 		
 	}
 	catch(e){}
+	
+	//start service by product
+	$(document).on('click','#service_div .service',function(){
+		
+		requestService({"product": currentProduct, "code": $(this).attr('service'), "description": $(this).html()});
+		
+	});
+	
+	
 	getValidTimePeriods();
 	callNewMSG();
 	makeSwipe();
