@@ -251,6 +251,7 @@
 			alert('b');
 			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"regId" :regId,"products":products,secretKey:secretKey},function(data){
 					$.jStorage.set('idSecretClient', data['idSecretClient']);
+					idScretClient = data['idSecretClient'];
 					console.log(JSON.stringify(data));
 			});
 		}
