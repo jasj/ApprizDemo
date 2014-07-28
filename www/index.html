@@ -502,7 +502,7 @@
 						  var mpi = management;
 						  var array_serv = JSON.parse(atob(msg.attr('services')));
 							for(serv in  array_serv){
-								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
+								management = management +"<li msg='"+msg.attr('id')+"' services='"+serv+"'>"+array_serv[serv]+"</li>";
 							}
 							
 							try{
@@ -629,7 +629,8 @@
 						  var mpi = management;
 						  var array_serv = JSON.parse(atob(msg.attr('services')));
 							for(serv in  array_serv){
-								management = management +"<li services='"+serv+"'>"+array_serv[serv]+"</li>";
+								console.log(msg.attr('id'));
+								management = management +"<li msg='"+msg.attr('id')+"' services='"+serv+"'>"+array_serv[serv]+"</li>";
 							}
 							
 						
@@ -645,6 +646,15 @@
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				 threshold:0
 			});
+			
+			$( document ).on('click','li[services]',function(){
+				console.log(JSON.stringify({"idMessage": $(this).attr('msg'), "code": $(this).attr('services'), "description": $(this).html()}));
+				requestService({"idMessage": $(this).attr('msg'), "code": $(this).attr('services'), "description": $(this).html()});
+				
+			});
+			
+		
+		
 		
 		
 		
