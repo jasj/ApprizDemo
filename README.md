@@ -3,8 +3,10 @@ ApprizDemo
 Disclaimer:
     This software has been made under 
     
-    
-Methos Availbles:
+###Change Logs:
+  1. [First Commit](changelogs/2014-07.18.md)
+
+###Methos Availbles:
   1. [bindClient](docs/bindClient.md)
   2. [getMessagesByClient]()
   3. [getRulesByProduct]()
@@ -14,6 +16,6 @@ Methos Availbles:
   7. [getServicesByProduct]()
   8. [sendServiceRequest]()
 
-Errors:
+###Errors:
   1. [Errors Codes]()
 
