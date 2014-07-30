@@ -1,8 +1,9 @@
 ApprizDemo
 ===================================
 Disclaimer:
-    This software has been made under 
-    
+This software is designed to be used with the "Appriz cloud Services(ACS)", any other use is prohibited. Using this API is also forbidden for people without specific permission.
+
+===================================
 ###Change Logs:
   1. [First Commit](changelogs/2014-07.18.md)
 
