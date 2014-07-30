@@ -1,7 +1,7 @@
 ApprizDemo
 ===================================
 Disclaimer:
-This software is designed to be used with the "Appriz cloud Services(ACS)", any other use is prohibited. Using this API is also forbidden for people without specific permission.
+This software is designed to be used with the "Appriz Cloud Services(ACS)", any other use is prohibited. Using this API is also forbidden for people without specific permission.
 
 ===================================
 ###Change Logs:
