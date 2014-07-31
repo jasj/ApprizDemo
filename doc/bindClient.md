@@ -3,7 +3,7 @@ bindClient Metod
 
 This method bind a client with the ACS, and it´s return a secret identification that should be used for consume the others services of the API.
 
-###Request Data
+##Request Data
  property  | type | required | comments
  ----------|------|----------|---------
  secretKey |string|yes| this key will be provided by Appriz
@@ -18,11 +18,11 @@ uuid|string|yes|Universally unique identifier
 regId|string|yes| key used for receive "push notifications" 
 products|productObject|yes|[see details below]()
 
-###productObject 
+####productObject 
 the products are given by an associative array that must follow the next structure
 > *productName*:*productType*
 
-###Response Data
+##Response Data
 
   property | type | command
  ----------|------|---------
