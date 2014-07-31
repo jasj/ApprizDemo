@@ -18,7 +18,7 @@ This software is designed to be used with the "Appriz Cloud Services(ACS)", any 
   1. [First Commit](changelogs/2014-07.18.md)
 
 ###Methos Availbles:
-  1. [bindClient](docs/bindClient.md)
+  1. [bindClient](doc/bindClient.md)
   2. [getMessagesByClient]()
   3. [getRulesByProduct]()
   4. [setRulesByProduct]()
