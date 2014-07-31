@@ -17,9 +17,11 @@ type|integer| 1: My Alert<br> 2 : Fraud Warning<br> 3 : Promotion <br> 4: Notifi
 shortMessage|string|Subject of the message
 longMessage|string|body of the message
 postdate|datetime|timestamp
-services|servicesObject|[see below]()
-appends|appendsObject|[see below]()	
+services|servicesObject|Services available [see below]()
+appends|appendsObject|For example transaccition information [see below]()	
 status|integer| 200 : OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
 error|object| use a JSON.stringify. ONLY FOR STATUS 452.
+
+####servicesObject
 	
 	
