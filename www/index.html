@@ -765,7 +765,7 @@
 	//start service by product
 	$(document).on('click','#service_div .service',function(){
 		
-		requestService({"product": currentProduct, "code": $(this).attr('service'), "description": $(this).html()});
+		requestService({"productName": currentProduct, "code": $(this).attr('service'), "description": $(this).html()});
 		
 	});
 	
