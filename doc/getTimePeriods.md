@@ -6,6 +6,7 @@ Get all periods defined by the entity
  property  | type | required | comments
  ----------|------|----------|---------
  secretKey |string|yes| this key will be provided by Appriz
+ language|string| | **Default: en**<br>Values:<br> en : English <br> es : Spanish
  
 ##Response Data
   property | type | comments
