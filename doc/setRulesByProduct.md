@@ -12,6 +12,13 @@ Set values of a rules of a product. Use first getRulesProduct to get valid field
  totalAmount|integer| |Boundery of accumulative amount on transacctions selecter by the customer 
  varation|integer | 
  
+ ##Response Data
+
+  property | type | command
+ ----------|------|---------
+status|integer| 200 : OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
+error|object| use a JSON.stringify. ONLY FOR STATUS 452.
+ 
  
  
 
