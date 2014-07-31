@@ -15,7 +15,7 @@ This service is used by the client to request an entity's service.
  
 ##Response Data
 
-  property | type | command
+  property | type | comments
  ----------|------|---------
 status|integer| 200 : OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
 error|object| use a JSON.stringify. ONLY FOR STATUS 452.
