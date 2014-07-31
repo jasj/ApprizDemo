@@ -10,7 +10,7 @@ idSecretClient|string|yes|This is the value given by the bindClient method.
 
 ##response Data
 
-property | type | command
+property | type | comments
 ----------|------|---------
 idMessage|string|Unique message identifier in the whole the entity 
 type|integer| 1: My Alert<br> 2 : Fraud Warning<br> 3 : Promotion <br> 4: Notification <br> 5: Service  
