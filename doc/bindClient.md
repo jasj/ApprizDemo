@@ -18,7 +18,7 @@ regId|string|yes| key used for receive "push notifications"
 products|productObject|yes|[see details below]()
 
 ###productObject 
-the products are given by an associative array that must to follow the next structure
+the products are given by an associative array that must follow the next structure
 > *productName*:*productType*
 
 
