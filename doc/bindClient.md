@@ -24,7 +24,7 @@ the products are given by an associative array that must follow the next structu
 
 ##Response Data
 
-  property | type | command
+  property | type | comments
  ----------|------|---------
 idSecretClient|string|secret identification 
 status|integer| 200 : OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
