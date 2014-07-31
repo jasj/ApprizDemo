@@ -24,4 +24,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
 
 ####servicesObject
 	
-	
+> *service_code* : *description*
+
+####appendsObject
+> *field* : *value*
