@@ -19,14 +19,14 @@ This software is designed to be used with the "Appriz Cloud Services(ACS)", any 
 
 ###Methos Availbles:
   1. [bindClient](doc/bindClient.md)
-  2. [getMessagesByClient]()
-  3. [getRulesByProduct]()
-  4. [setRulesByProduct]()
-  5. [getTimePeriods]()
-  6. [getProductsByClient]()
-  7. [getServicesByProduct]()
-  8. [sendServiceRequest]()
+  2. [getMessagesByClient](doc/getMessagesByClient.md)
+  3. [getRulesByProduct](doc/getRulesByProduct.md)
+  4. [getRulesByProduct](doc/getRulesByProduct.md)
+  5. [getTimePeriods](doc/getTimePeriods.md)
+  6. [getProductsByClient](doc/getProductsByClient.md)
+  7. [getServicesByProduct](doc/getServicesByProduct.md)
+  8. [sendServiceRequest](doc/sendServiceRequest.md)
 
 ###Errors:
-  1. [Errors Codes]()
+  1. [Errors Codes](doc/error_codes.md)
 
