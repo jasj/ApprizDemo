@@ -20,7 +20,7 @@ products|productObject|yes|[see details below]()
 
 ####productObject 
 the products are given by an associative array that must follow the next structure
-> *productName*:*productType*
+> *product_name*:*product_type*
 
 ##Response Data
 
