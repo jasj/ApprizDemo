@@ -21,7 +21,7 @@ This software is designed to be used with the "Appriz Cloud Services(ACS)", any 
   1. [bindClient](doc/bindClient.md)
   2. [getMessagesByClient](doc/getMessagesByClient.md)
   3. [getRulesByProduct](doc/getRulesByProduct.md)
-  4. [getRulesByProduct](doc/getRulesByProduct.md)
+  4. [setRulesByProduct](doc/setRulesByProduct.md)
   5. [getTimePeriods](doc/getTimePeriods.md)
   6. [getProductsByClient](doc/getProductsByClient.md)
   7. [getServicesByProduct](doc/getServicesByProduct.md)
