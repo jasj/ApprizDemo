@@ -1,15 +1,19 @@
 sendServiceRequest
 ========================
+
+##Request Data
 This service is used by the client to request an entity's service. 
- property  | type | required | comments
- ----------|------|----------|---------
- idSecretClient|string|yes|This is the value given by the bindClient method.
- code|string|string|yes| code that use the entity to recognize the service
- description|string|yes| description of the service
- idMessage|string | | Id of the message bound to the service
- productName|string | | Product name that is bound to the service
+
  
- ##Response Data
+ property  | type | required | comments
+-----------|------|----------|---------
+ idSecretClient|string|yes|This is the value given by the bindClient method.
+ code|string|string|yes|Code that use the entity to recognize the service.
+ description|string|yes|Description of the service
+ idMessage|string| |Id of the message bound to the service
+ productName|string| |Product name that is bound to the service.
+ 
+##Response Data
 
   property | type | command
  ----------|------|---------
