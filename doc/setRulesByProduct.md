@@ -12,7 +12,7 @@ Set values of a rules of a product. Use first getRulesProduct to get valid field
  totalAmount|integer| |Boundery of accumulative amount on transacctions selecter by the customer 
  varation|integer | 
  
- ##Response Data
+##Response Data
 
   property | type | command
  ----------|------|---------
