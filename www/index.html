@@ -850,7 +850,7 @@ function errorHandler (error) {
 			$(this).find('input').replaceWith($(this).find('input').val());
 			$(this).find('select').replaceWith($(this).find('option:selected').val());
 			
-			prd_lab_tmp[$(this).find('td').eq(0).html()] = $(this).find('td').eq(1).html();
+			prd_lab_tmp[$(this).find('td').eq(0).html()+""] = $(this).find('td').eq(1).html();
 			
 			
 		});
