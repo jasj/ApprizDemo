@@ -1,8 +1,8 @@
 getRulesByProduct
 ===============================
-Get the  rules of a product
-
-##Request Data
+Get the rules of a product. In the case where the user did not choose rules values or has it disabled, the API will return the values defined by the entity, otherwise it's will return chosen values by the customer.
+##Request
+ Data
 property  | type | required | comments
 ----------|------|----------|---------
 idSecretClient|string|yes|This is the value given by the bindClient method.
