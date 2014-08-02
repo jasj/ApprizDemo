@@ -1,13 +1,13 @@
 ApprizDemo
 ===================================
 Disclaimer:
-This software is designed to be used with the "Appriz Cloud Services(ACS)", any other use is prohibited. Using this API is also forbidden for people without specific permission.
+This software is designed to be used with the "Appriz Cloud Services(ACS)", any other use is prohibited. The use of this API is  forbidden for people without a specific permission.
 
 ===================================
 ###How use:
-**Rest API:** This API is consumed using POST protocols, so you could use any REST client. **Why POST?** Simple, as the target of Appriz is to expose financial  information trough  the web , we must to keep all the information encrypted and take advantage  of the SSL channels, avoiding show information such as Client's ID into the URL.
+**Rest API:** This API is consumed using POST protocols, so you could use any REST client. **Why POST?** Simple,  cause  the target of Appriz is to expose financial  information trough  the web , we must  keep all the information encrypted and take advantage  of the SSL channels, avoiding to show information such as Client's ID into the URL.
 
-**Using Phonegap**: Using jQuery to consume the API,  you could invocke method as is shown below:
+**Using Phonegap**: Using jQuery to consume the API,  you could invocke any methods as it is shown below:
 > $.post(API_URL,method_name,request_data function(data){});
 
 **Using Andorid SDK**:
