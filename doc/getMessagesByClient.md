@@ -48,13 +48,13 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
     "shortMessage": "A transaction was made with your AMEX-7540",
     "longMessage" : "Dear Smith, a transaction was made with your AMEX-7540 for an amount of $3000USD.",
     "postdate" :  1407060641267,
-    "appends" : {
-    	[
+    "appends" : [
+    	{
 	    	"Amount" : "3000",
 	    	"Currency" : "USD",
 	    	"business": "McDonals
-	 ]
-    },
+	 }
+    ],
     "satus": 200
 }
 ```
