@@ -30,20 +30,22 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
 
 ####Request
 ```json
- "idSecretClient": "rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==",
- "productName" : "Visa-9876",
- "rules":[
-  {
-   "idRule": "Apild+dldlfn3498aj4398d9n984/d094349c434s8093Qn==",
-   "idTime" 3,
-   "trxNo" : 4
- },
+{
+  "idSecretClient": "rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==",
+  "productName" : "Visa-9876",
+  "rules":[
    {
-   "idRule": "Apild+dl6767894839409fdg9+32\43d094349c434s8093Qn==",
-   "singleAmount" : 4
- },
- 
-]
+    "idRule": "Apild+dldlfn3498aj4398d9n984/d094349c434s8093Qn==",
+    "idTime" 3,
+    "trxNo" : 4
+  },
+    {
+    "idRule": "Apild+dl6767894839409fdg9+32\43d094349c434s8093Qn==",
+    "singleAmount" : 4
+  },
+  
+ ]
+}
 ```
 
 ####Response
@@ -51,6 +53,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
 {
  "status" : 200
 }
+```
  
  
 
