@@ -38,12 +38,11 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
     "idRule": "Apild+dldlfn3498aj4398d9n984/d094349c434s8093Qn==",
     "idTime" 3,
     "trxNo" : 4
-  },
+   },
     {
     "idRule": "Apild+dl6767894839409fdg9+32\43d094349c434s8093Qn==",
     "singleAmount" : 4
-  },
-  
+   },
  ]
 }
 ```
