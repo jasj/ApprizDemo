@@ -45,7 +45,7 @@ idTime|integer| Time identificator, use "getTimePeriods" to match with the right
     "idRule" : "rtysds/ddfkndn/UY858wEYAl+/Dpz53inojRjff1kcAxW1venoifn==",
     "ruleName": "Number of local purchases made over a period of time",
     "description": "Alert me when there are more than <[trxNo]> local purchases in the last <[idTime]>.",
-    "trxNo": 3
+    "trxNo": 3,
     "idTime" : 2
   }
 ]
