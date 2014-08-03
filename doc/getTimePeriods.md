@@ -27,36 +27,36 @@ unit|string| this value could be<br>Minutes(s)<br>Hours(s)<br>Day(s)
 ####Request
 ```json
 {
-"secretKey": "53E9DD3F-3891-476B-B0BD-039E4CE87C79",
+ "secretKey": "53E9DD3F-3891-476B-B0BD-039E4CE87C79",
 }
 ```
 
 ####Response
 ```json
 {
-"periods" : [
- {
-  "idTime": 1,
-  "amount":  10,
-  "unit": "Minutes(s)"
- },
+ "periods" : [
   {
-  "idTime": 2,
-  "amount":  30,
-  "unit": "Minutes(s)"
- },
+    "idTime": 1,
+    "amount":  10,
+    "unit": "Minutes(s)"
+  },
   {
-  "idTime": 4,
-  "amount":  12,
-  "unit": "Hours(s)"
- },
+    "idTime": 2,
+    "amount":  30,
+    "unit": "Minutes(s)"
+  },
   {
-  "idTime": 1,
-  "amount":  10,
-  "unit": "Day(s)"
- }
-],
-"status" 200
+    "idTime": 4,
+    "amount":  12,
+    "unit": "Hours(s)"
+  },
+  {
+    "idTime": 1,
+    "amount":  10,
+    "unit": "Day(s)"
+  }
+ ],
+ "status" 200
 }
 ```
 
