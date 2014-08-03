@@ -10,12 +10,12 @@ This method bind a client with the ACS, and returns a secret identification that
 identification|string|yes|Identification used by the entity to know who is the customer.
 firstName|string|yes|Customer first name
 lastName|string|yes|Customer Lastname
-nationality|string| | The API supports this entry but doesn´t do anything with it
+nationality|string| |The API supports this entry but doesn´t do anything with it
 sex|enum| |Values: F or M.  The API supports this entry but doesn´t do anything with it
 birthDate|date| |Use a timestamp format. The API supports this entry but doesn´t do anything with it
 residence|string| |The API supports this entry but doesn´t do anything with it
 uuid|string|yes|Universally unique identifier
-regId|string|yes|key used to receive "push notifications" 
+regId|string|yes|Key used to receive "push notifications" 
 products|productObject|yes|[see details below]()
 
 ####productObject 
