@@ -1,4 +1,4 @@
-ApprizDemo
+Appriz Mobile API
 ===================================
 Disclaimer:
 This software is designed to be used with the "Appriz Cloud Services(ACS)", any other use is prohibited. The use of this API is  forbidden for people without a specific permission.
@@ -11,11 +11,13 @@ This software is designed to be used with the "Appriz Cloud Services(ACS)", any 
 > $.post(API_URL,method_name,request_data function(data){});
 
 **Using Andorid SDK**:
+[see this link](http://hmkcode.com/android-parsing-json-data/)
 
 **Using xCode**
+[see this link](http://spring.io/guides/gs/consuming-rest-ios/)
 
 ###Change Logs:
-  1. [First Commit](changelogs/2014-07.18.md)
+  1. [First Commit](changelogs/2014-07-18.md)
 
 ###Methos Availbles:
   1. [bindClient](doc/bindClient.md)
