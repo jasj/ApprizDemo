@@ -40,7 +40,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
     "firstName": "John"
     "lastName": "Smith",
     "uuid": "df300345ab",
-    "regId": "APK0930d090c9453af09bd09e09a09f8323034a"
+    "regId": "APK0930d090c9453af09bd09e09a09f8323034a",
     "products": {
         "AMEX-7854": "CREDIT CARD",
         "VISA-9876": "DEBID CARD"
