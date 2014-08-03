@@ -36,23 +36,23 @@ unit|string| this value could be<br>Minutes(s)<br>Hours(s)<br>Day(s)
 {
 "periods" : [
  {
-  "idTime": 1
-  "amount":  10
+  "idTime": 1,
+  "amount":  10,
   "unit": "Minutes(s)"
  },
   {
-  "idTime": 2
-  "amount":  30
+  "idTime": 2,
+  "amount":  30,
   "unit": "Minutes(s)"
  },
   {
-  "idTime": 4
-  "amount":  12
+  "idTime": 4,
+  "amount":  12,
   "unit": "Hours(s)"
  },
   {
-  "idTime": 1
-  "amount":  10
+  "idTime": 1,
+  "amount":  10,
   "unit": "Day(s)"
  }
 ],
