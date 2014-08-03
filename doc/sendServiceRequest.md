@@ -1,5 +1,6 @@
 sendServiceRequest
 ========================
+This method is used to start a service from client site. The service could be bound to a message or to a producto.
 
 ##Request Data
 This service is used by the client to request an entity's service. 
