@@ -52,7 +52,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
     	{
 	    	"Amount" : "3000",
 	    	"Currency" : "USD",
-	    	"business": "McDonals
+	    	"business": "McDonals"
 	 }
     ],
     "satus": 200
