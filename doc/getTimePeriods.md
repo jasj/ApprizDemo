@@ -22,3 +22,41 @@ idTime|integer| Identification of the period
 amount|integer| Amount of time
 unit|string| this value could be<br>Minutes(s)<br>Hours(s)<br>Day(s)
 
+##Examples
+
+####Request
+```json
+{
+"secretKey": "53E9DD3F-3891-476B-B0BD-039E4CE87C79",
+}
+```
+
+####Response
+```json
+{
+"periods" : [
+ {
+  "idTime": 1
+  "amount":  10
+  "unit": "Minutes(s)"
+ },
+  {
+  "idTime": 2
+  "amount":  30
+  "unit": "Minutes(s)"
+ },
+  {
+  "idTime": 4
+  "amount":  12
+  "unit": "Hours(s)"
+ },
+  {
+  "idTime": 1
+  "amount":  10
+  "unit": "Day(s)"
+ }
+],
+"status" 200
+}
+```
+
