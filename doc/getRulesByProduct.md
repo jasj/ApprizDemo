@@ -47,7 +47,14 @@ idTime|integer| Time identificator, use "getTimePeriods" to match with the right
     "description": "Alert me when there are more than <[trxNo]> local purchases in the last <[idTime]>.",
     "trxNo": 3,
     "idTime" : 2
+  },
+  {
+    "idRule" : "rtysds/ddfkndn/UY858wEgkas+dlfkdkdkdkgj54ojRjff1kcAxW1venoifn==",
+    "ruleName" : "Purchase amount in a supermarket",
+    "description" : "Alert me when any individual transaction in a supermarket is over <amount>.",
+    "singleAmount": 200
   }
+  
 ]
 ```
 
