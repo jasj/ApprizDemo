@@ -33,7 +33,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
   "products":{
     "AMEX-6545" : "CREDIT CARD",
     "VISA-9876" : "DEBIT CARD"
-  }
+  },
   "status": 200
 }
 ```
