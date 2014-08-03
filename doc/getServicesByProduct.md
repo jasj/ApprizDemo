@@ -33,7 +33,10 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
 
 ```json
 {
+"services":{
   "GP001" : "Block my debit card",
   "GP002" : "Send me the Account Statement":
+},
+"status" 200
 }
 ```
