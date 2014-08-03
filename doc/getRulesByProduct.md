@@ -1,6 +1,6 @@
 getRulesByProduct
 ===============================
-Get the rules of a product. In the case where the user did not choose rules values or has it disabled, the API will return the values suggested by the entity, otherwise it's will return chosen values by the customer.
+Get the rules of a product. In the case where the user did not chosen rules values or has it disabled, the API will return the values suggested by the entity, otherwise it will return chosen values by the customer.
 
 ##Request Data
 property  | type | required | comments
