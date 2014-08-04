@@ -43,7 +43,7 @@ error|object| use a JSON.stringify. ONLY FOR STATUS 452.
     "regId": "APK0930d090c9453af09bd09e09a09f8323034a",
     "products": {
         "AMEX-7854": "CREDIT CARD",
-        "VISA-9876": "DEBID CARD"
+        "VISA-9876": "DEBIT CARD"
     }
 }
 ```
