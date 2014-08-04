@@ -21,7 +21,7 @@ postdate|datetime|Timestamp
 services|servicesObject|Services available [see below]()
 appends|ArrayOfAppendsObject|For an example of a transaction information [see below]()	
 status|integer| 200: OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
-error|object| use a JSON.stringify. ONLY FOR STATUS 452.
+error|object| Use a JSON.stringify. ONLY FOR STATUS 452.
 
 ####servicesObject
 	
