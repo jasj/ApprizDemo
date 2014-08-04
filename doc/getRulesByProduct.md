@@ -11,7 +11,7 @@ productName|string|yes| Name of the product
 ##Response Data
 property | type | comments
 ----------|------|---------
-rules|arrayOfRulesObject|an array with all the rules
+rules|arrayOfRulesObject|An array with all the rules
 status|integer| 200: OK<br> 452: Request data missed <br> 506: Internal Error due invalid request data
 error|object| Use a JSON.stringify. ONLY FOR STATUS 452.
 
@@ -25,7 +25,7 @@ description|string| Long description of the rules, could have wildcards of the v
 totalAmount|integer| Accumulated amount of the transactions 
 trxNo|integer|Quantity of transactions 
 singleAmount|integer| Individual amount
-varation|integer| 
+variation|integer| 
 idTime|integer| Time identificator, use "getTimePeriods" to match with the right time
 
 ##Examples
