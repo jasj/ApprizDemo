@@ -1,6 +1,7 @@
 setRulesByProduct
 =====================
 Set values of a rules of a product. Use first getRulesProduct to get valid fields, otherwise the invockation could result in error.
+For disable a rule send it with no any fields.
 
 ##Request Data
 property  | type | required | comments
