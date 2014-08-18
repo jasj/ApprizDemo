@@ -17,10 +17,10 @@
     </author>
 
     <!--
-If you do not want any permissions to be added to your app, add the
-following tag to your config.xml; you will still have the INTERNET
-permission on your app, which PhoneGap requires.
--->
+	If you do not want any permissions to be added to your app, add the
+	following tag to your config.xml; you will still have the INTERNET
+	permission on your app, which PhoneGap requires.
+	-->
    
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version" value="3.5.0" /> <!-- all: current version of PhoneGap -->
@@ -33,13 +33,15 @@ permission on your app, which PhoneGap requires.
 		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
 	</feature>
 	
+	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreenDelay" value="10000" />
+	
 	<platform name="android">
 		<icon src="res/android/ldpi.png" density="ldpi" />
 		<icon src="res/android/mdpi.png" density="mdpi" />
 		<icon src="res/android/hdpi.png" density="hdpi" />
 		<icon src="res/android/xhdpi.png" density="xhdpi" />
      </platform>
-
 	
     <!-- Plugins -->
 
@@ -62,13 +64,12 @@ permission on your app, which PhoneGap requires.
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
-<gap:plugin name="com.phonegap.plugins.barcodescanner" />
--->
+		<gap:plugin name="com.phonegap.plugins.barcodescanner" />
+	-->
 
     <!-- Define app icon for each platform. -->
     <icon src="img/logo.png" />
-   
-   
+	<gap:splash src="res/screen/SplashScreen.png" />
   
 
     <!-- Define app splash screen for each platform. 
