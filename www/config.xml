@@ -25,8 +25,8 @@ permission on your app, which PhoneGap requires.
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version" value="3.5.0" /> <!-- all: current version of PhoneGap -->
     <preference name="Orientation" value="portrait" /> <!-- all: default means both landscape and portrait are enabled -->
-	<preference name="keepRunning" value="true" /> 
-     <!--<preference name="fullscreen" value="true" /> <!-- all: hides the status bar at the top of the screen -->
+	<preference name="keepRunning" value="false" /> 
+    <!--<preference name="fullscreen" value="true" /> --><!-- all: hides the status bar at the top of the screen -->
    
     <!--Features-->
 	<feature name="SplashScreen">
@@ -58,7 +58,7 @@ permission on your app, which PhoneGap requires.
 	
 	
 	<gap:config-file platform="android" parent="/manifest">
-		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+		<uses-permission android:name="android.permission.READ_PHONE_STATE"><uses-permission/>
 	</gap:config-file>
 
     <!-- Third party plugins -->
