@@ -22,8 +22,7 @@
 	
 	<body>
 		<div class="header_demo">
-		<img src='img/logo_smbank.png' style='height:36px;'></img>
-			
+			<img src='img/logo_smbank.png' style='height:36px;'></img>			
 		</div>
 		
 		<div class="principal_menu">
@@ -31,56 +30,55 @@
 			<i class="fa fa-envelope-o  fa-fw"	div="message_tab" iconp="filter" iconl="flush"></i>
 			<i class="fa fa-flask fa-fw" div="github_tab"></i>
 			<i class="fa fa-cogs fa-fw" div="config_tab"></i>
-		</div>
-		
+		</div>		
 		
 		<div id='entity_tab' class='view active' style='text-align:center;'>
 			<img src='img/icono-appriz.png' class='appriz_logo'/>
-			<br>APPRIZ(R) 2014. Demo mobile API.</br>
+			<br><language>APPRIZ(R) 2014. Demo mobile API.</language></br>
 		</div>
 		
 		<div id='message_tab' class='view'>
-			<div style='width:100%;  ' class="internal_header" ><p class='title' > Inbox</p>
+			<div style='width:100%;  ' class="internal_header" ><p class='title' ><language> Inbox</language></p>
 				<!--<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")' style='background-color: #ff9090'/>-->
 			</div>
-			<div class='refreshing_list'><i class="fa fa-spinner fa-spin"></i> Refreshing ...</div>
-			<div id='message_div' class='view_container'></div>		
+			<div class='refreshing_list'><i class="fa fa-spinner fa-spin"></i><language> Refreshing...</language></div>
+			<div id='message_div' class='view_container'></div>
 		</div>
 		
 		<div id='github_tab' class='view'>
 		<div style='width:100%;  ' class="internal_header"><p class='title' > Lab</p></div>
 		<div id='lab_div' class='view_container'>
-			 <p id="deviceProperties">Loading device properties...</p>
+			 <p id="deviceProperties"><language>Loading device properties...</language></p>
 			 <hr>
 			 <div id="app-status-ul" style='width:100%; overflow-x: auto;'></div>
 			 <hr>
 			<frameset>
-				<legend>Client Info:</legend>
+				<legend><language>Client Info:<language></legend>
 					<table id="lab_client">
-						<tr><th>Identification</th><td><input id='lab_input_id' type='text'/></td></tr>
-						<tr><th>First Name</th><td><input id='lab_input_first' type='text'/></td></tr>
-						<tr><th>Last Name</th><td><input id='lab_input_lastname' type='text'/></td></tr>
-						<tr><th>UUID</<th><td><input id='lab_input_uuid' type='text'/></td></th></tr>
-						<tr><th>Phone</th><th><input id='lab_input_phone' type='text'/></th></tr>
-						<tr><th>S.O</th><th><input id='lab_input_id' type='text'/></th></tr>
+						<tr><th><language>Identification</language></th><td><input id='lab_input_id' type='text'/></td></tr>
+						<tr><th><language>First Name</language></th><td><input id='lab_input_first' type='text'/></td></tr>
+						<tr><th><language>Last Name</language></th><td><input id='lab_input_lastname' type='text'/></td></tr>
+						<tr><th><language>UUID</language></<th><td><input id='lab_input_uuid' type='text'/></td></th></tr>
+						<tr><th><language>Phone</language></th><th><input id='lab_input_phone' type='text'/></th></tr>
+						<tr><th><language>S.O</language></th><th><input id='lab_input_id' type='text'/></th></tr>
 					</table>
 			</frameset>
 			<hr>
 			<frameset>
-				<legend>Products: <input type='button' value=' Add product' style='font-family: FontAwesome' onclick='$( "#lab_products tbody").append("<tr><td><input/></td><td><select><option value=\"TarjetaCredito\">TarjetaCredito</option><option value=\"TarjetaDebito\">TarjetaDebito</option></select></td></tr>")'/></legend>
+				<legend>
+					<language>Products: </language>
+					<input type='button' value=' Add product' style='font-family: FontAwesome' onclick='$( "#lab_products tbody").parent().append("<tr><td><input/></td><td><select><option value=\"TarjetaCredito\">TarjetaCredito</option><option value=\"TarjetaDebito\">TarjetaDebito</option></select></td></tr>")'/>
+				</legend>
+			
+				<table id="lab_products">
+				<tr><th><language>Product</language></th><th><language>Type</language></th></tr>
+				<tbody>
+				</tbody>
+				</table>
 				
-					<table id="lab_products">
-					<tr><th>Product</th><th>Type</th></tr>
-					<tbody>
-					</tbody>
-					
-					
-					</table>
-					
-					<input id='btn_bindClient' type='button' value=' bindClient' style='font-family: FontAwesome'></input>
-					<hr>
-					<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")' style='background-color: #ff9090'/>
-					
+				<input id='btn_bindClient' type='button' value=' bindClient' style='font-family: FontAwesome'></input>
+				<hr>
+				<!--<input type='button' value='flush message' onclick='$.jStorage.deleteKey("msg_div")' style='background-color: #ff9090'/>-->
 				
 			</frameset>
 			
@@ -89,17 +87,16 @@
 		</div>
 		
 		<div id='config_tab' class='view'>
-			<div style='width:100%;  ' class="internal_header"><p class='title' > Settings</p></div>
+			<div style='width:100%;  ' class="internal_header"><p class='title' ><language> Settings</language></p></div>
 			<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style='background-color: #fefefe !important;'>
-            </br>&nbsp;
-			</br>&nbsp;
-			<li class="ui-last-child" view='products' eval='getProducts("services")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i> Service luncher</a></li>
-			</br>&nbsp;
-			</br>&nbsp;
-			
-			<li class="ui-last-child" view='products' eval='getProducts("rules")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i> Config my alerts</a></li>
-		</ul>
-			
+				</br>&nbsp;
+				</br>&nbsp;
+				<li class="ui-last-child" view='products' eval='getProducts("services")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-rocket fa-fw"></i><language> Service luncher</language></a></li>
+				</br>&nbsp;
+				</br>&nbsp;
+				
+				<li class="ui-last-child" view='products' eval='getProducts("rules")'><a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><i class="fa fa-exclamation-triangle fa-fw"></i><language> Config my alerts</language></a></li>
+			</ul>			
 		</div>
 		
 		<div id='detail_msg' class='view' iconp="back">
@@ -108,19 +105,17 @@
 				<img width='60px' class='typeIcon'></img>
 				<p style="text-align: justify; color: #000" id='longMSG'></p>
 			</div>
-			<div style='width:100%;  ' class="internal_header" view='history_view'><i class="fa fa-history" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;History<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
+			<div style='width:100%;  ' class="internal_header" view='history_view'><i class="fa fa-history" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;<language>History</language><i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
 			<div class='div_content2 history_view' style='display: none;'></div>
-			<div style='width:100%;  ' class="internal_header"  view='trx_view'><i class="fa fa-random" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;Transactions<i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
+			<div style='width:100%;  ' class="internal_header"  view='trx_view'><i class="fa fa-random" style='margin-left: 8px;'></i>&nbsp;&nbsp;&nbsp;<language>Transactions</language><i class="fa fa-plus-square-o" style="position: absolute; right: 12px; margin-top: 7px;"></i> </div>
 			<div class='div_content2 trx_view' style='display: none; border: 1px solid #ddd; border-radius: 0 0 10px 10px; overflow-y: auto; ' ></div>
-			
-			 
-			 <div class='management'><ul>
-				 </ul></div>
-				 <a href="#" class="ui-btn mng" onclick="$('.management').toggle();">management </a>
-			</div>
+						 
+			<div class='management'><ul></ul></div>
+			<a href="#" class="ui-btn mng" onclick="$('.management').toggle();"><language>Management </language></a>
+		</div>
 			
 		<div id='config_rules' class='view' iconp="back">
-			<div style='width:100%; ' class="internal_header" ><p class='title' > My Alerts</p></div>
+			<div style='width:100%; ' class="internal_header" ><p class='title' ><language> My Alerts</language></p></div>
 			<div id='rules_div' class='view_container'></div>
 		</div>
 		
@@ -130,21 +125,21 @@
 		</div>
 		
 		<div id='service_luncher' class='view' iconp="back">
-			<div style='width:100%;  ' class="internal_header"><p class='title' > Services</p></div>
+			<div style='width:100%;  ' class="internal_header"><p class='title' ><language> Services</language></p></div>
 			<div id='service_div' class='view_container'></div>
 		</div>
 		
 		<div class='vertical_menu'>
 			<ul>
 				
-				<li><img src='img/ic_90_iPhone_ios7_myalerts.png'/><div>My Alerts</div> <i class="fa fa-check-square-o"></i></li>
-				<li><img src='img/ic_90_iPhone_ios7_alerts.png'/><div>Alerts</div> <i class="fa fa-check-square-o"></i></li>
-				<li><img src='img/ic_90_iPhone_ios7_notific.png'/><div>Notifications</div> <i class="fa fa-check-square-o"></i></li>
-				<li><img src='img/ic_90_iPhone_ios7_publicidad.png'/><div>Promotions</div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_myalerts.png'/><div><language>My Alerts</language></div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_alerts.png'/><div><language>Alerts</language></div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_notific.png'/><div><language>Notifications</language></div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/ic_90_iPhone_ios7_publicidad.png'/><div><language>Promotions</language></div> <i class="fa fa-check-square-o"></i></li>
 		
-				<li ><img src='img/FFFFFF-1.png'/><div>Read </div> <i class="fa fa-check-square-o"></i></li>
-				<li><img src='img/FFFFFF-1.png'/><div>Unread</div> <i class="fa fa-check-square-o"></i> </li>
-				<li style='background-color: #7878AE !important; text-align: center; color: white;' class='close_filter'>Close Filter</li>
+				<li ><img src='img/FFFFFF-1.png'/><div><language>Read </language></div> <i class="fa fa-check-square-o"></i></li>
+				<li><img src='img/FFFFFF-1.png'/><div><language>Unread</language></div> <i class="fa fa-check-square-o"></i> </li>
+				<li style='background-color: #7878AE !important; text-align: center; color: white;' class='close_filter'><language>Close Filter</language></li>
 			</ul>
 		</div>
 		
@@ -154,57 +149,51 @@
 		<div id='loadingIndicator'>
 			<div id='content'>
 				<i class="fa fa-refresh fa-spin"></i>
-				<br><loadingText>Loading...</loadingText>
+				<br><loadingText><language>Loading...</language></loadingText>
 			</div>
 		</div> 
 		
+		<!--
+			Security screen, authorized pin needed
+		-->
+		<!--
+		<div id='securityCredentials'>
+			<div id='content'>
+				<i class="fa fa-refresh fa-spin"></i>
+				<br><language>Type your security PIN</language>
+				<input type="text" ></input> <!--ASAP->
+			</div>
+		</div>	
+		-->
 		
-		
-	
-		
-		<i class="fa fa-recycle iconRight" id="flush" style="display: block !important;"></i>
+		<i class="fa fa-recycle iconRight" id="flush"></i>
 		<i class="fa fa-arrow-circle-o-left iconp"></i>
-		<i class="fa fa-filter icons" id='filter'></i>
-		
+		<i class="fa fa-filter icons" id='filter'></i>		
 	</body>
 	
 	<script>
-	var pushNotification;
-	eregid = "123";
-	
-	//Example values   
-	currentProduct = "kilomanyaroB";
-	var secretKey = '53E9DD3F-3891-476B-B0BD-039E4CE87C79';
-	var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
-	rulesChanges = {};
-	// IP = '10.60.0.75';
-	IP = '54.81.6.137';
-	//---------------------------------------------//
-	// for PC BROWSER SUPPORT  CORDS
-	//----------------------------------------------
-	//$.ajaxSetup({crossDomain: true});
-	
-	 </script>
-		<script src="js/apprizSDK.js"></script>
-		<script src="js/API_Use.js"></script>
-		<script src="js/getData.js"></script>
-		<script src="js/processRuleChange.js"></script>
-		<script src="js/GUI_and_Generic_functions.js"></script>
+		var pushNotification;
+		eregid = "123";
 		
-	 <script>
-		
-		
-		
-
-		
-		
-	
-	
-	
-	
-		
-
+		//Example values   
+		currentProduct = "kilomanyaroB";
+		var secretKey = '53E9DD3F-3891-476B-B0BD-039E4CE87C79';
+		var idScretClient = 'rtLtgs9/+XnHhJy/RFq+xTg+KnP2B9OjFaUqKaiU3rYjRjff1kcAxW1veBwboz2Vc5T28vvUXTi5nUes4asHoNJbQsbc7zLNAHirrI8ra6xMnU4bhF8wkDeqBOHmWiomcn/UY858wEYAl+/Dpz53L2qHT9pU7Q+EVSTovgYogJ66WoNt7CoDkfh7zrb9vJZq7ojqskhVA6LUi9O4BhiI3Q==';
+		rulesChanges = {};
+		// IP = '10.60.0.75';
+		IP = '54.81.6.137';
+		//---------------------------------------------//
+		// for PC BROWSER SUPPORT  CORDS
+		//----------------------------------------------
+		//$.ajaxSetup({crossDomain: true});	
 	</script>
+	
+	<script src="js/apprizSDK.js"></script>
+	<script src="js/API_Use.js"></script>
+	<script src="js/processRuleChange.js"></script>
+	<script src="js/GUI_and_Generic_functions.js"></script>
+	<script src="js/onDeviceReady.js"></script>
+
 	<script src="js/jqstorage.js"></script>
 	
 </html>

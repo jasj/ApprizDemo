@@ -134,7 +134,8 @@
 							$.each(array_appends,function(key,value){
 								strAppends = strAppends + "<table>";
 								for( field in value){
-									if(field == "Fecha_Hora"){var dd = new Date(value[field]); strAppends = strAppends +"<tr><th>"+field+"</th><td>"+dd.toLocaleString()+"</td></tr>";} 
+									//if(field == "Fecha_Hora"){var dd = new Date(value[field]); strAppends = strAppends +"<tr><th>"+field+"</th><td>"+dd.toLocaleString()+"</td></tr>";} 
+									if(field == "Fecha_Hora"){var dd = new Date(value[field]); strAppends = strAppends +"<tr><th>"+field+"</th><td>"+dd.getDay+"/"+dd.getMonth+"/"+dd.getYear+" "+dd.getHours+":"+dd.getMinutes+":"+dd.getSeconds+"</td></tr>";} 
 									else strAppends = strAppends +"<tr><th>"+field+"</th><td>"+value[field]+"</td></tr>";}
 								strAppends = strAppends + "</table>";
 							});
