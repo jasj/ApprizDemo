@@ -43,9 +43,7 @@ permission on your app, which PhoneGap requires.
 	
     <!-- Plugins -->
 
-    <!-- Core plugins -->
-
- 
+    <!-- Core plugins --> 
     <gap:plugin name="org.apache.cordova.console" />
 	<gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.device-motion" />
@@ -58,7 +56,7 @@ permission on your app, which PhoneGap requires.
 	
 	
 	<gap:config-file platform="android" parent="/manifest">
-		<uses-permission android:name="android.permission.READ_PHONE_STATE"><uses-permission/>
+		<user-permission name="android.permission.READ_PHONE_STATE"/>
 	</gap:config-file>
 
     <!-- Third party plugins -->
