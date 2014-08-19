@@ -5,7 +5,7 @@ This software is designed to be used with the "Appriz Cloud Services (ACS)", any
 
 ===================================
 ###How use:
-**Rest API:** This API is consumed using POST protocols, so you could use any REST client. **Why POST?** Simple,  cause  the target of Appriz is to expose financial  information trough  the web, we must keep all the information encrypted and take advantage of the SSL channels, avoiding to show information such as Client's ID into the URL.
+**Rest API:** This API is consumed using POST protocols, so you could use any REST client. **Why POST?** Simple,  cause  the target of Appriz is to expose financial information through the web, we must keep all the information encrypted and take advantage of the SSL channels, avoiding to show information such as Client's ID into the URL.
 
 **Using Phonegap**: Using jQuery to consume the API,  you could invocke any methods as it is shown below:
 > $.post(API_URL,method_name,request_data function(data){});
@@ -19,7 +19,7 @@ This software is designed to be used with the "Appriz Cloud Services (ACS)", any
 ###Change Logs:
   1. [First Commit](changelogs/2014-07-18.md)
 
-###Methos Availbles:
+###Methods Availble:
   1. [bindClient](doc/bindClient.md)
   2. [getMessagesByClient](doc/getMessagesByClient.md)
   3. [getRulesByProduct](doc/getRulesByProduct.md)
