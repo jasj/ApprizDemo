@@ -15,9 +15,8 @@
 		//bring message for this client
 		function callNewMSG(){
 		date = new Date();
-			$('#securityCredentials').hide();
 			$('.refreshing_list','#loadingIndicator').show();
-			//$('#loadingIndicator').show();
+			//$('#loadingIndicator').hide();
 			//
 			
 			$.post('http://'+IP+':8089/appriz/getMessagesByClient',{"idSecretClient": idScretClient},function(data){
