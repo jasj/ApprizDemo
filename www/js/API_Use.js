@@ -4,17 +4,18 @@
 		
 		//BindClient		
 		function BindClient(identification,firstName,lastName,uuid,regId,products){
-			
+			$('#loadingIndicator').show();
 			$.post('http://'+IP+':8089/appriz/bindClient',{"identification": identification,"firstName":firstName,"lastName":lastName,"uuid":uuid,"regId" :regId,"products":products,secretKey:secretKey},function(data){
 					$.jStorage.set('idSecretClient', data['idSecretClient']);
 					idScretClient = data['idSecretClient'];
 					console.log(JSON.stringify(data));
 			});
+			$('#loadingIndicator').hide();
 		}
 		
 		//bring message for this client
 		function callNewMSG(){
-		date = new Date();
+			date = new Date();
 			$('.refreshing_list','#loadingIndicator').show();
 			//$('#loadingIndicator').hide();
 			//
@@ -54,67 +55,70 @@
 		}
 		
 		function getRules(productName){
-		
-				$.post('http://'+IP+':8089/appriz/getRulesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
-					if (data["status"]== 200){
-						addRules(data["rules"]);
-					}
+			$('#loadingIndicator').show();
+			$.post('http://'+IP+':8089/appriz/getRulesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
+				if (data["status"]== 200){
+					addRules(data["rules"]);
+				}
 				
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
-			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });			
+			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });
+			$('#loadingIndicator').hide();			
 		}		
 		
 		function getServices(productName){
-		
-				$.post('http://'+IP+':8089/appriz/getServicesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
-					if (data["status"]== 200){
-						addServices(data["services"]);
-					}
-				
+			$('#loadingIndicator').show();
+			$.post('http://'+IP+':8089/appriz/getServicesByProduct',{"idSecretClient": idScretClient,"productName":productName,},function(data){
+				if (data["status"]== 200){
+					addServices(data["services"]);
+				}				
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
-			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); });			
+			}).done(function(){makeSwipe(); $('.refreshing_list').hide(); $('#loadingIndicator').hide(); });			
 		}
 		
 		function requestService(serviceObj){
-				$.post('http://'+IP+':8089/appriz/sendServiceRequest',$.extend({"idSecretClient": idScretClient},serviceObj),function(data){
-					if (data["status"]== 200){
-						alert('Sucessfull!');
-					}
-				
-				},'json') .fail(function(e) {
-					alert("conexion error!");
-				//alert( JSON.stringify(e));
-				}).done(function(){});
-			}
+			$('#loadingIndicator').show();
+			$.post('http://'+IP+':8089/appriz/sendServiceRequest',$.extend({"idSecretClient": idScretClient},serviceObj),function(data){
+				if (data["status"]== 200){
+					alert('Sucessfull!');
+				}
+			
+			},'json') .fail(function(e) {
+				alert("conexion error!");
+			//alert( JSON.stringify(e));
+			}).done(function(){});
+			$('#loadingIndicator').hide();
+		}
 		
 		
 		function getProducts(view){
-		
-				$.post('http://'+IP+':8089/appriz/getProductsByClient',{"idSecretClient": idScretClient,"view":view,},function(data){
-					if (data["status"]== 200){
-						addProducts(data["products"],view);
-					}
+			$('#loadingIndicator').show();
+			$.post('http://'+IP+':8089/appriz/getProductsByClient',{"idSecretClient": idScretClient,"view":view,},function(data){
+				if (data["status"]== 200){
+					addProducts(data["products"],view);
+				}
 				
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
 			}).done(function(){$('#products p.title').html((view == 'rules' ? 'My Alerts' : 'Services')+'<i class="fa fa-angle-double-right"></i>Products </p>')});
-			
+			$('#loadingIndicator').hide();
 		}
 		
 		function getValidTimePeriods(){
-					$.post('http://'+IP+':8089/appriz/getTimePeriods',{"secretKey" : secretKey},function(data){
-					if (data["status"]== 200){
-						SPickerString = timePicker(data["periods"]);
-					}
+			$('#loadingIndicator').show();
+			$.post('http://'+IP+':8089/appriz/getTimePeriods',{"secretKey" : secretKey},function(data){
+			if (data["status"]== 200){
+				SPickerString = timePicker(data["periods"]);
+			}
 				
 			},'json') .fail(function(e) {
 					alert("conexion error!");
 				//alert( JSON.stringify(e));
 			}).done(function(){});
-			
+			$('#loadingIndicator').hide();
 		}
