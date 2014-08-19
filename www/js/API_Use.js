@@ -18,7 +18,7 @@
 			$('#securityCredentials').hide();
 			$('.refreshing_list','#loadingIndicator').show();
 			//$('#loadingIndicator').show();
-			navigator.splashscreen.show();
+			//
 			
 			$.post('http://'+IP+':8089/appriz/getMessagesByClient',{"idSecretClient": idScretClient},function(data){
 				

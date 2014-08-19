@@ -149,7 +149,7 @@
 		<div id='loadingIndicator'>
 			<div id='content'>
 				<i class="fa fa-refresh fa-spin"></i>
-				<br><loadingText><language>Loading...</language></loadingText>
+				<loadingText><language>Loading...</language></loadingText>
 			</div>
 		</div> 
 		
@@ -172,6 +172,7 @@
 	</body>
 	
 	<script>
+		navigator.splashscreen.show();
 		var pushNotification;
 		eregid = "123";
 		
